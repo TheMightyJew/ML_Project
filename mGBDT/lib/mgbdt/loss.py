@@ -1,4 +1,4 @@
-from mgbdt.utils.torch_utils import TorchLossWrapper
+from mGBDT.lib.mgbdt.utils.torch_utils import TorchLossWrapper
 
 
 def get_loss(name, *args, **kwargs):

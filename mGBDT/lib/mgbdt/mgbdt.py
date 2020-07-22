@@ -2,10 +2,10 @@ import numpy as np
 import six
 from termcolor import colored
 
-from mgbdt.layer import BPLayer, TPLayer
-from mgbdt.loss import get_loss
-from mgbdt.model import MultiXGBModel
-from mgbdt.utils.log_utils import logger
+from mGBDT.lib.mgbdt.layer import BPLayer, TPLayer
+from mGBDT.lib.mgbdt.loss import get_loss
+from mGBDT.lib.mgbdt.model import MultiXGBModel
+from mGBDT.lib.mgbdt.utils.log_utils import logger
 
 
 class MGBDT:

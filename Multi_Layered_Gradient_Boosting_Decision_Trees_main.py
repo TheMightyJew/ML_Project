@@ -1,3 +1,7 @@
+# Ji Feng, Yang Yu, Zhi-Hua Zhou, Multi-Layered Gradient Boosting Decision Trees (NIPS 2018):
+# https://paperswithcode.com/paper/multi-layered-gradient-boosting-decision
+
+
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 

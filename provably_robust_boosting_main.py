@@ -1,3 +1,6 @@
+# Maksym Andriushchenko, Matthias Hein, Provably Robust Boosted Decision Stumps and Trees against Adversarial Attacks (NeurIPS 2019):
+# https://paperswithcode.com/paper/provably-robust-boosted-decision-stumps-and-1
+
 import numpy as np
 import provably_robust_boosting.data as data
 from provably_robust_boosting.tree_ensemble import TreeEnsemble
