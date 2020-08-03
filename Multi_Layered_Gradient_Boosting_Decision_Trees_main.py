@@ -35,7 +35,7 @@ net.add_layer("tp_layer",
 net.init(x_train, n_rounds=5)
 
 # fit the dataset
-net.fit(x_train, y_train, n_epochs=50, eval_sets=[(x_test, y_test)], eval_metric="accuracy")
+net.fit(x_train, y_train, n_epochs=5, eval_sets=[(x_test, y_test)], eval_metric="accuracy")
 
 # prediction
 y_pred = net.forward(x_test)

@@ -12,7 +12,8 @@ class OnlineXGB(XGBModel):
         if extra_params is not None:
             for k, v in extra_params.items():
                 params[k] = v
-        params.pop("n_estimators")
+        if "n_estimators" in params:
+            params.pop("n_estimators")
 
         if callable(self.objective):
             obj = _objective_decorator(self.objective)
@@ -20,7 +21,7 @@ class OnlineXGB(XGBModel):
         else:
             obj = None
 
-        if self._Booster is None:
+        if "_Booster" not in dir(self) or self._Booster is None:
             self._Booster = train(
                     params=params,
                     dtrain=trainDmatrix,
