@@ -12,7 +12,7 @@ models = [(wprb, OneVsRestClassifier(wprb()), dict(estimator__min_samples_split=
 random_state = 42
 external_split = 10
 internal_split = 3
-optimization_iterations = 50
+optimization_iterations = 2
 
 for filename in os.listdir(directory):
     df = pd.read_csv(directory + '/' + filename)
@@ -22,7 +22,8 @@ for filename in os.listdir(directory):
     Y = df.iloc[:, -1:]
     kf = KFold(n_splits=external_split, random_state=random_state)
     print(filename)
-    for train_index, test_index in kf.split(X):
+    for fold_index, (train_index, test_index) in enumerate(kf.split(X)):
+        print("fold index =", fold_index)
         x_train = X.iloc[train_index]
         y_train = Y.iloc[train_index]
         x_test = X.iloc[test_index]
