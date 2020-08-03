@@ -1,8 +1,8 @@
 import numpy as np
 from termcolor import colored
 
-from mgbdt.model import MultiXGBModel
-from mgbdt.utils.log_utils import logger
+from mGBDT.lib.mgbdt.model import MultiXGBModel
+from mGBDT.lib.mgbdt.utils.log_utils import logger
 
 
 class MGBDTAntoEncoder:
