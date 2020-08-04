@@ -37,14 +37,6 @@ class Wrapper_provably_robust_boosting:
 
     def predict(self, X_test):
         return np.round(self.predict_proba(X_test)[:, 1])
-        '''
-        # track generalization and robustness
-        yf_test = y_test * self.model.predict(X_test)
-        min_yf_test = ensemble.certify_treewise(X_test, y_test, self.eps)
-        if i == 1 or i % 5 == 0:
-            print('Iteration: {}, test error: {:.2%}, upper bound on robust test error: {:.2%}'.format(
-                i, np.mean(yf_test < 0.0), np.mean(min_yf_test < 0.0)))
-        '''
 
     def fit(self, X_train, y_train):
         model_name = 'robust_bound'  # robust tree ensemble
