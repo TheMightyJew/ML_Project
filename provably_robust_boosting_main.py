@@ -25,6 +25,7 @@ for i in range(1, n_trees + 1):
     # calculate per-example weights for the next iteration
     gamma = np.exp(-ensemble.certify_treewise(X_train, y_train, eps))
 
+    y_pred = ensemble.predict(X_test)
     # track generalization and robustness
     yf_test = y_test * ensemble.predict(X_test)
     min_yf_test = ensemble.certify_treewise(X_test, y_test, eps)
