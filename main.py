@@ -4,7 +4,6 @@ from sklearn.model_selection import KFold
 from sklearn.model_selection import RandomizedSearchCV
 from WrappedModels.wrapper_provably_robust_boosting import Wrapper_provably_robust_boosting as wprb
 from scipy.stats import uniform, randint, rv_discrete
-from random import randrange
 from sklearn.metrics import accuracy_score, make_scorer, precision_score, roc_curve, auc, precision_recall_curve, \
     roc_auc_score
 from sklearn.multiclass import OneVsRestClassifier
@@ -12,11 +11,11 @@ import lightgbm
 from xbart import XBART
 from WrappedModels.wrapper_xbart import Wrapper_xbart as wxbart
 import time
+from sklearn.preprocessing import LabelEncoder
 import numpy as np
 
 df_columns = ['Dataset Name', 'Algorithm Name', 'Cross Validation[1-10]', 'Hyper-Parameters Values', 'Accuracy', 'TPR',
-              'FPR',
-              'Precision', 'AUC', 'PR Curve', 'Training Time', 'Inference Time']
+              'FPR', 'Precision', 'AUC', 'PR Curve', 'Training Time', 'Inference Time']
 df_results = pd.DataFrame(columns=df_columns)
 data_dict = {}
 
@@ -36,7 +35,7 @@ xk = [5, 10, 50, 100, 200, 500, 1000]
 pk = [1 / len(xk)] * len(xk)
 min_samples_split_dist = rv_discrete(name='min_samples_split_dist', values=(xk, pk))
 wprb_dist_dict = dict(estimator__min_samples_split=min_samples_split_dist, estimator__max_depth=randint(3, 6))
-models.append(('Provably Robust Boosting', wprb, OneVsRestClassifier(wprb()), wprb_dist_dict))
+# models.append(('Provably Robust Boosting', wprb, OneVsRestClassifier(wprb()), wprb_dist_dict))
 
 num_trees_k = [20, 50, 100, 200]
 num_trees_dist = rv_discrete(name='num_trees_dist', values=(num_trees_k, [1 / len(num_trees_k)] * len(num_trees_k)))
@@ -44,23 +43,40 @@ num_sweeps_k = [20, 40, 60, 80]
 num_sweeps_dist = rv_discrete(name='num_sweeps_dist',
                               values=(num_sweeps_k, [1 / len(num_sweeps_k)] * len(num_sweeps_k)))
 wxbart_dist_dict = dict(num_trees=num_trees_k, num_sweeps=num_sweeps_dist)
-models.append(('XBART', wxbart, wxbart(), wxbart_dist_dict))
+# models.append(('XBART', wxbart, wxbart(), wxbart_dist_dict))
 
 random_state = 42
-external_split = 3
+external_split = 2
 internal_split = 2
 optimization_iterations = 2
 
-for filename in os.listdir(directory):
-    filename = 'iris.csv'
-    # filename = 'kidney.csv'
-    data_dict['Dataset Name'] = filename.replace('.csv', '')
-    df = pd.read_csv(directory + '/' + filename)
+
+def fix_dataset(df):
+    le = LabelEncoder()
+    for i in range(len(df.columns)):
+        if df.iloc[:, i].dtype.name in ['category', 'object']:
+            df.iloc[:, i].fillna(df.iloc[:, i].mode().iloc[0], inplace=True)
+            df.iloc[:, i] = le.fit_transform(df.iloc[:, i])
+        elif 'int' in df.iloc[:, i].dtype.name:
+            df.iloc[:, i].fillna(round(df.iloc[:, i].mean()), inplace=True)
+        else:
+            df.iloc[:, i].fillna(df.iloc[:, i].mean(), inplace=True)
     df.columns = [x for x in range(len(df.columns[:-1]))] + ['Class']
     X = df.iloc[:, :-1]
     Y = df.iloc[:, -1:]
-    kf = KFold(n_splits=external_split, random_state=random_state, shuffle=True)
+    return X, Y
+
+
+for filename in os.listdir(directory):
+    # filename = 'iris.csv'
+    # filename = 'lupus.csv'
+    # filename = 'kidney.csv'
+    # filename = 'autos.csv'
     print(filename)
+    data_dict['Dataset Name'] = filename.replace('.csv', '')
+    df = pd.read_csv(directory + '/' + filename)
+    X, Y = fix_dataset(df)
+    kf = KFold(n_splits=external_split, random_state=random_state, shuffle=True)
     for fold_index, (train_index, test_index) in enumerate(kf.split(X)):
         data_dict['Cross Validation[1-10]'] = fold_index
         print("fold index =", fold_index)
@@ -86,17 +102,23 @@ for filename in os.listdir(directory):
                 best_model = model_class(**params)
             data_dict['Hyper-Parameters Values'] = params
             best_model.fit(x_train, y_train.values.ravel())
-            data_dict['Training Time'] = round(time.time() - start_training_time, 4)
-            print("best params:", params)
+            data_dict['Training Time'] = time.time() - start_training_time
+            print("best params:", best_model)
             print("train accuracy:", accuracy_score(y_train, best_model.predict(x_train)))
             start_inference_time = time.time()
             test_pred = best_model.predict(x_test)
             test_pred_proba = best_model.predict_proba(x_test)
-            data_dict['Inference Time'] = round((time.time() - start_inference_time) / (len(x_test)) * 1000, 4)
+            data_dict['Inference Time'] = (time.time() - start_inference_time) / (len(x_test)) * 1000
             print("test accuracy:", accuracy_score(y_test, test_pred))
             print()
-            data_dict['Accuracy'] = round(accuracy_score(y_test, test_pred), 4)
-            data_dict['Precision'] = round(precision_score(y_test, test_pred, average='micro'), 4)
+            data_dict['Accuracy'] = accuracy_score(y_test, test_pred)
+            data_dict['Precision'] = precision_score(y_test, test_pred, average='macro')
+            unique_labels = np.unique(Y.values)
+            if len(unique_labels) == 2:  # multiclass vs binary classification
+                data_dict['AUC'] = roc_auc_score(y_true=y_test, y_score=test_pred_proba[:, 1])
+            else:
+                data_dict['AUC'] = roc_auc_score(y_true=y_test, y_score=test_pred_proba, multi_class='ovr',
+                                                 labels=np.unique(Y.values))
             # check
             # fpr, tpr, _ = roc_curve(y_test, test_pred)
             data_dict['PR Curve'] = 0
@@ -113,4 +135,3 @@ for filename in os.listdir(directory):
             df_results = df_results.append(data_dict, ignore_index=True)
     df_results.to_csv('Results/' + filename)
     df_results = df_results.iloc[0:0]
-    break
