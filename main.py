@@ -1,14 +1,14 @@
 import os
 import pandas as pd
-from sklearn.model_selection import KFold
+from sklearn.model_selection import StratifiedKFold
 from sklearn.model_selection import RandomizedSearchCV
+from sklearn.ensemble import AdaBoostClassifier
 from WrappedModels.wrapper_provably_robust_boosting import Wrapper_provably_robust_boosting as wprb
 from scipy.stats import uniform, randint, rv_discrete
-from sklearn.metrics import accuracy_score, make_scorer, precision_score, roc_curve, auc, precision_recall_curve, \
-    roc_auc_score
+from sklearn.metrics import accuracy_score, make_scorer, precision_score, auc, precision_recall_curve, \
+    roc_auc_score, confusion_matrix
 from sklearn.multiclass import OneVsRestClassifier
 import lightgbm
-from xbart import XBART
 from WrappedModels.wrapper_xbart import Wrapper_xbart as wxbart
 import time
 from sklearn.preprocessing import LabelEncoder
@@ -22,20 +22,24 @@ data_dict = {}
 directory = 'classification_datasets'
 models = []
 
-num_leaves_k = [5, 10, 50, 100]
-num_leaves_dist = rv_discrete(name='num_leaves_dist',
-                              values=(num_leaves_k, [1 / len(num_leaves_k)] * len(num_leaves_k)))
 n_estimators_k = [20, 50, 100, 200]
 n_estimators_dist = rv_discrete(name='n_estimators_dist',
                                 values=(n_estimators_k, [1 / len(n_estimators_k)] * len(n_estimators_k)))
-light_dist_dict = dict(num_leaves=num_leaves_dist, n_estimators=n_estimators_dist)
-models.append(('LightGBM', lightgbm.LGBMClassifier, lightgbm.LGBMClassifier(), light_dist_dict))
+adb_dist_dict = dict(learning_rate=uniform(loc=0.1, scale=1.9), n_estimators=n_estimators_dist)
 
-xk = [5, 10, 50, 100, 200, 500, 1000]
-pk = [1 / len(xk)] * len(xk)
-min_samples_split_dist = rv_discrete(name='min_samples_split_dist', values=(xk, pk))
-wprb_dist_dict = dict(estimator__min_samples_split=min_samples_split_dist, estimator__max_depth=randint(3, 6))
-# models.append(('Provably Robust Boosting', wprb, OneVsRestClassifier(wprb()), wprb_dist_dict))
+num_leaves_k = [5, 10, 50, 100]
+num_leaves_dist = rv_discrete(name='num_leaves_dist',
+                              values=(num_leaves_k, [1 / len(num_leaves_k)] * len(num_leaves_k)))
+light_dist_dict = dict(num_leaves=num_leaves_dist, n_estimators=n_estimators_dist)
+
+min_samples_split_k = [20, 50, 100, 200, 500, 1000, 2000]
+min_samples_split_prob = [1 / len(min_samples_split_k)] * len(min_samples_split_k)
+min_samples_split_dist = rv_discrete(name='min_samples_split_dist',
+                                     values=(min_samples_split_k, min_samples_split_prob))
+min_samples_leaf_dist = rv_discrete(name='min_samples_split_dist',
+                                    values=([sample * 0.5 for sample in min_samples_split_k], min_samples_split_prob))
+wprb_dist_dict = dict(estimator__min_samples_split=min_samples_split_dist,
+                      estimator__min_samples_leaf=min_samples_leaf_dist, estimator__max_depth=randint(2, 5))
 
 num_trees_k = [20, 50, 100, 200]
 num_trees_dist = rv_discrete(name='num_trees_dist', values=(num_trees_k, [1 / len(num_trees_k)] * len(num_trees_k)))
@@ -43,7 +47,11 @@ num_sweeps_k = [20, 40, 60, 80]
 num_sweeps_dist = rv_discrete(name='num_sweeps_dist',
                               values=(num_sweeps_k, [1 / len(num_sweeps_k)] * len(num_sweeps_k)))
 wxbart_dist_dict = dict(num_trees=num_trees_k, num_sweeps=num_sweeps_dist)
-# models.append(('XBART', wxbart, wxbart(), wxbart_dist_dict))
+
+models.append(('Adaboost', AdaBoostClassifier, AdaBoostClassifier(), adb_dist_dict))
+models.append(('LightGBM', lightgbm.LGBMClassifier, lightgbm.LGBMClassifier(), light_dist_dict))
+models.append(('Provably Robust Boosting', wprb, OneVsRestClassifier(wprb()), wprb_dist_dict))
+models.append(('XBART', wxbart, wxbart(), wxbart_dist_dict))
 
 random_state = 42
 external_split = 2
@@ -72,12 +80,14 @@ for filename in os.listdir(directory):
     # filename = 'lupus.csv'
     # filename = 'kidney.csv'
     # filename = 'autos.csv'
+    # filename = 'analcatdata_germangss.csv'
+    one_file = False
     print(filename)
     data_dict['Dataset Name'] = filename.replace('.csv', '')
     df = pd.read_csv(directory + '/' + filename)
     X, Y = fix_dataset(df)
-    kf = KFold(n_splits=external_split, random_state=random_state, shuffle=True)
-    for fold_index, (train_index, test_index) in enumerate(kf.split(X)):
+    kf = StratifiedKFold(n_splits=external_split, random_state=random_state, shuffle=True)
+    for fold_index, (train_index, test_index) in enumerate(kf.split(X, Y)):
         data_dict['Cross Validation[1-10]'] = fold_index
         print("fold index =", fold_index)
         x_train = X.iloc[train_index]
@@ -103,35 +113,40 @@ for filename in os.listdir(directory):
             data_dict['Hyper-Parameters Values'] = params
             best_model.fit(x_train, y_train.values.ravel())
             data_dict['Training Time'] = time.time() - start_training_time
-            print("best params:", best_model)
-            print("train accuracy:", accuracy_score(y_train, best_model.predict(x_train)))
+            print("best params:", params)
+            print("train accuracy:", round(accuracy_score(y_train, best_model.predict(x_train)), 4))
             start_inference_time = time.time()
             test_pred = best_model.predict(x_test)
             test_pred_proba = best_model.predict_proba(x_test)
             data_dict['Inference Time'] = (time.time() - start_inference_time) / (len(x_test)) * 1000
-            print("test accuracy:", accuracy_score(y_test, test_pred))
+            print("test accuracy:", round(accuracy_score(y_test, test_pred), 4))
             print()
             data_dict['Accuracy'] = accuracy_score(y_test, test_pred)
-            data_dict['Precision'] = precision_score(y_test, test_pred, average='macro')
+            data_dict['Precision'] = precision_score(y_test, test_pred, average='macro', labels=np.unique(test_pred))
             unique_labels = np.unique(Y.values)
             if len(unique_labels) == 2:  # multiclass vs binary classification
                 data_dict['AUC'] = roc_auc_score(y_true=y_test, y_score=test_pred_proba[:, 1])
             else:
-                data_dict['AUC'] = roc_auc_score(y_true=y_test, y_score=test_pred_proba, multi_class='ovr',
-                                                 labels=np.unique(Y.values))
+                plaster = test_pred_proba[:, [np.where(np.unique(Y.values) == x)[0][0] for x in np.unique(y_test)]]
+                plaster2 = np.array([[x / sum(y) for x in y] for y in plaster])
+                data_dict['AUC'] = roc_auc_score(y_true=y_test, y_score=plaster2, multi_class='ovr',
+                                                 labels=np.unique(y_test))
             # check
-            # fpr, tpr, _ = roc_curve(y_test, test_pred)
-            data_dict['PR Curve'] = 0
-            data_dict['FPR'] = 0
-            data_dict['TPR'] = 0
-            data_dict['AUC'] = 0
-            # data_dict['FPR'] = np.mean(fpr)
-            # data_dict['TPR'] = np.mean(tpr)
-            # data_dict['AUC'] = auc(fpr, tpr)
-            # data_dict['AUC'] = roc_auc_score(y_test, test_pred_proba, multi_class="ovo")
-            #
-            # precision, recall, thresholds = precision_recall_curve(y_test, test_pred_proba)
-            # data_dict['PR Curve'] = auc(precision, recall)
+            all_TPR = []
+            all_FPR = []
+            all_PR_CURVE = []
+            for index, class_label in enumerate(np.unique(y_test)):
+                tn, fp, fn, tp = confusion_matrix(y_test == class_label, test_pred == class_label).ravel()
+                all_FPR.append(fp / (fp + tn))
+                all_TPR.append(tp / (tp + fn))
+                precision, recall, _ = precision_recall_curve(y_test == class_label, test_pred_proba[:, index])
+                all_PR_CURVE.append(auc(recall, precision))
+            data_dict['FPR'] = np.mean(all_FPR)
+            data_dict['TPR'] = np.mean(all_TPR)
+            data_dict['PR Curve'] = np.mean(all_PR_CURVE)
+
             df_results = df_results.append(data_dict, ignore_index=True)
-    df_results.to_csv('Results/' + filename)
+    df_results.to_csv('Results/' + filename, index=False)
     df_results = df_results.iloc[0:0]
+    if one_file:
+        break
