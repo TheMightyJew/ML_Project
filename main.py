@@ -54,9 +54,9 @@ models.append(('Provably Robust Boosting', wprb, OneVsRestClassifier(wprb()), wp
 models.append(('XBART', wxbart, wxbart(), wxbart_dist_dict))
 
 random_state = 42
-external_split = 2
-internal_split = 2
-optimization_iterations = 2
+external_split = 10
+internal_split = 3
+optimization_iterations = 50
 
 
 def fix_dataset(df):
@@ -72,16 +72,39 @@ def fix_dataset(df):
     df.columns = [x for x in range(len(df.columns[:-1]))] + ['Class']
     X = df.iloc[:, :-1]
     Y = df.iloc[:, -1:]
+
+    changed = True
+    while changed:
+        original_class_labels = np.unique(Y.values)
+        changed = False
+        for class_index in range(len(original_class_labels)):
+            if Y.iloc[:, 0].value_counts()[original_class_labels[class_index]] < external_split:
+                changed = True
+                if class_index > 0:
+                    before = Y.iloc[:, 0].value_counts()[original_class_labels[class_index - 1]]
+                else:
+                    before = 0
+                if class_index < len(original_class_labels) - 1:
+                    after = Y.iloc[:, 0].value_counts()[original_class_labels[class_index + 1]]
+                else:
+                    after = 0
+                if 0 < after < before:
+                    change_to = original_class_labels[class_index + 1]
+                else:
+                    change_to = original_class_labels[class_index - 1]
+                Y = Y.replace(original_class_labels[class_index], change_to)
+                break
+
+    original_class_labels = np.unique(Y.values)
+    for class_index in range(len(original_class_labels)):
+        Y = Y.replace(original_class_labels[class_index], class_index)
+
     return X, Y
 
-
+special_filenames = ['iris', 'lupus', 'kidney', 'autos', 'analcatdata_germangss', 'braziltourism']
+one_file = True
 for filename in os.listdir(directory):
-    # filename = 'iris.csv'
-    # filename = 'lupus.csv'
-    # filename = 'kidney.csv'
-    # filename = 'autos.csv'
-    # filename = 'analcatdata_germangss.csv'
-    one_file = False
+    filename = special_filenames[5] + '.csv'
     print(filename)
     data_dict['Dataset Name'] = filename.replace('.csv', '')
     df = pd.read_csv(directory + '/' + filename)
