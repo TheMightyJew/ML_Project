@@ -46,7 +46,13 @@ num_trees_dist = rv_discrete(name='num_trees_dist', values=(num_trees_k, [1 / le
 num_sweeps_k = [20, 40, 60, 80]
 num_sweeps_dist = rv_discrete(name='num_sweeps_dist',
                               values=(num_sweeps_k, [1 / len(num_sweeps_k)] * len(num_sweeps_k)))
-wxbart_dist_dict = dict(num_trees=num_trees_k, num_sweeps=num_sweeps_dist)
+burnin_k = [0, 1, 2, 5, 10, 15]
+burnin_dist = rv_discrete(name='burnin_dist',
+                              values=(burnin_k, [1 / len(burnin_k)] * len(burnin_k)))
+max_depth_num_k = [3, 4, 5, 6]
+max_depth_num_dist = rv_discrete(name='max_depth_num_dist',
+                              values=(max_depth_num_k, [1 / len(max_depth_num_k)] * len(max_depth_num_k)))
+wxbart_dist_dict = dict(num_trees=num_trees_k, num_sweeps=num_sweeps_dist, burnin=burnin_dist, max_depth_num=max_depth_num_dist, alpha=uniform(loc=0.1, scale=1.9), beta=uniform(loc=0.1, scale=1.9))
 
 models.append(('Adaboost', AdaBoostClassifier, AdaBoostClassifier(), adb_dist_dict))
 models.append(('LightGBM', lightgbm.LGBMClassifier, lightgbm.LGBMClassifier(), light_dist_dict))
@@ -56,7 +62,7 @@ models.append(('XBART', wxbart, wxbart(), wxbart_dist_dict))
 random_state = 42
 external_split = 10
 internal_split = 3
-optimization_iterations = 50
+optimization_iterations = 20
 
 
 def fix_dataset(df):
@@ -95,16 +101,21 @@ def fix_dataset(df):
                 Y = Y.replace(original_class_labels[class_index], change_to)
                 break
 
+    indexes_dict = {}
     original_class_labels = np.unique(Y.values)
     for class_index in range(len(original_class_labels)):
-        Y = Y.replace(original_class_labels[class_index], class_index)
+        indexes_dict[class_index] = (Y['Class'] == original_class_labels[class_index]).values
+    for class_index in indexes_dict.keys():
+        current_indexes = indexes_dict[class_index]
+        Y['Class'].iloc[current_indexes] = class_index
 
     return X, Y
 
+
 special_filenames = ['iris', 'lupus', 'kidney', 'autos', 'analcatdata_germangss', 'braziltourism']
-one_file = True
+one_file = False
 for filename in os.listdir(directory):
-    filename = special_filenames[5] + '.csv'
+    #filename = special_filenames[5] + '.csv'
     print(filename)
     data_dict['Dataset Name'] = filename.replace('.csv', '')
     df = pd.read_csv(directory + '/' + filename)
@@ -150,9 +161,9 @@ for filename in os.listdir(directory):
             if len(unique_labels) == 2:  # multiclass vs binary classification
                 data_dict['AUC'] = roc_auc_score(y_true=y_test, y_score=test_pred_proba[:, 1])
             else:
-                plaster = test_pred_proba[:, [np.where(np.unique(Y.values) == x)[0][0] for x in np.unique(y_test)]]
-                plaster2 = np.array([[x / sum(y) for x in y] for y in plaster])
-                data_dict['AUC'] = roc_auc_score(y_true=y_test, y_score=plaster2, multi_class='ovr',
+                # plaster = test_pred_proba[:, [np.where(np.unique(Y.values) == x)[0][0] for x in np.unique(y_test)]]
+                # plaster2 = np.array([[x / sum(y) for x in y] for y in plaster])
+                data_dict['AUC'] = roc_auc_score(y_true=y_test, y_score=test_pred_proba, multi_class='ovr',
                                                  labels=np.unique(y_test))
             # check
             all_TPR = []

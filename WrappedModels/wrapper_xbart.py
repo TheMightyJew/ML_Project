@@ -9,10 +9,13 @@ import sys
 
 class Wrapper_xbart:
 
-    def __init__(self, num_trees=100, num_sweeps=40, burnin=15):
+    def __init__(self, num_trees=100, num_sweeps=40, burnin=15, max_depth_num=250, alpha=0.95, beta=1.25):
         self.num_trees = num_trees
         self.num_sweeps = num_sweeps
         self.burnin = burnin
+        self.max_depth_num = max_depth_num
+        self.alpha = alpha
+        self.beta = beta
         self.model = None
         self.labels = None
 
@@ -48,6 +51,6 @@ class Wrapper_xbart:
 
     def fit(self, X_train, y_train):
         self.labels = np.unique(y_train)
-        ensemble = XBART(num_trees=self.num_trees, num_sweeps=self.num_sweeps, burnin=self.burnin)
+        ensemble = XBART(num_trees=self.num_trees, num_sweeps=self.num_sweeps, burnin=self.burnin, max_depth_num=self.max_depth_num, alpha=self.alpha, beta=self.beta)
         ensemble.fit(X_train, y_train)
         self.model = ensemble
