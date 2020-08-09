@@ -20,7 +20,6 @@ df_results = pd.DataFrame(columns=df_columns)
 data_dict = {}
 
 directory = 'classification_datasets'
-models = []
 
 n_estimators_k = [20, 50, 100, 200]
 n_estimators_dist = rv_discrete(name='n_estimators_dist',
@@ -54,15 +53,12 @@ max_depth_num_dist = rv_discrete(name='max_depth_num_dist',
                               values=(max_depth_num_k, [1 / len(max_depth_num_k)] * len(max_depth_num_k)))
 wxbart_dist_dict = dict(num_trees=num_trees_k, num_sweeps=num_sweeps_dist, burnin=burnin_dist, max_depth_num=max_depth_num_dist, alpha=uniform(loc=0.1, scale=1.9), beta=uniform(loc=0.1, scale=1.9))
 
-models.append(('Adaboost', AdaBoostClassifier, AdaBoostClassifier(), adb_dist_dict))
-models.append(('LightGBM', lightgbm.LGBMClassifier, lightgbm.LGBMClassifier(), light_dist_dict))
-models.append(('Provably Robust Boosting', wprb, OneVsRestClassifier(wprb()), wprb_dist_dict))
-models.append(('XBART', wxbart, wxbart(), wxbart_dist_dict))
-
-random_state = 42
-external_split = 10
-internal_split = 3
-optimization_iterations = 20
+algorithms_dict = {}
+algorithms_dict['Adaboost'] = ('Adaboost', AdaBoostClassifier, AdaBoostClassifier(), adb_dist_dict)
+algorithms_dict['LightGBM'] = ('LightGBM', lightgbm.LGBMClassifier, lightgbm.LGBMClassifier(), light_dist_dict)
+algorithms_dict['Provably Robust Boosting'] = (
+    'Provably Robust Boosting', wprb, OneVsRestClassifier(wprb()), wprb_dist_dict)
+algorithms_dict['XBART'] = ('XBART', wxbart, wxbart(), wxbart_dist_dict)
 
 
 def fix_dataset(df):
@@ -112,10 +108,8 @@ def fix_dataset(df):
     return X, Y
 
 
-special_filenames = ['iris', 'lupus', 'kidney', 'autos', 'analcatdata_germangss', 'braziltourism']
-one_file = False
-for filename in os.listdir(directory):
-    #filename = special_filenames[5] + '.csv'
+def run_test(filename, results_dir, models, random_state, external_split, internal_split, optimization_iterations):
+    global df_results
     print(filename)
     data_dict['Dataset Name'] = filename.replace('.csv', '')
     df = pd.read_csv(directory + '/' + filename)
@@ -165,7 +159,6 @@ for filename in os.listdir(directory):
                 # plaster2 = np.array([[x / sum(y) for x in y] for y in plaster])
                 data_dict['AUC'] = roc_auc_score(y_true=y_test, y_score=test_pred_proba, multi_class='ovr',
                                                  labels=np.unique(y_test))
-            # check
             all_TPR = []
             all_FPR = []
             all_PR_CURVE = []
@@ -180,7 +173,30 @@ for filename in os.listdir(directory):
             data_dict['PR Curve'] = np.mean(all_PR_CURVE)
 
             df_results = df_results.append(data_dict, ignore_index=True)
-    df_results.to_csv('Results/' + filename, index=False)
+    df_results.to_csv(results_dir + '/' + filename, index=False)
     df_results = df_results.iloc[0:0]
-    if one_file:
-        break
+
+
+def test_models(random_state, external_split, internal_split, optimization_iterations):
+    models = list(algorithms_dict.values())
+    for filename in os.listdir(directory):
+        run_test(filename, 'Results', models, random_state, external_split, internal_split, optimization_iterations)
+
+
+def get_best_model(filename):
+    return None
+
+
+def test_meta_learner(random_state, external_split, internal_split, optimization_iterations):
+    for filename in os.listdir(directory):
+        best_model = get_best_model(filename)
+
+
+special_filenames = ['iris', 'lupus', 'kidney', 'autos', 'analcatdata_germangss', 'braziltourism']
+random_state = 42
+external_split = 10
+internal_split = 3
+optimization_iterations = 20
+run_test('iris.csv', 'Results', list(algorithms_dict.values()), random_state, external_split, internal_split, optimization_iterations)
+# test_models(random_state, external_split, internal_split, optimization_iterations)
+# test_meta_learner(random_state, external_split, internal_split, optimization_iterations)
