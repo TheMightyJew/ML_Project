@@ -97,6 +97,8 @@ def fix_dataset(df):
                 Y = Y.replace(original_class_labels[class_index], change_to)
                 break
 
+    Y['Class'] = le.fit_transform(Y['Class'])
+    '''
     indexes_dict = {}
     original_class_labels = np.unique(Y.values)
     for class_index in range(len(original_class_labels)):
@@ -104,7 +106,7 @@ def fix_dataset(df):
     for class_index in indexes_dict.keys():
         current_indexes = indexes_dict[class_index]
         Y['Class'].iloc[current_indexes] = class_index
-
+    '''
     return X, Y
 
 
@@ -197,6 +199,6 @@ random_state = 42
 external_split = 10
 internal_split = 3
 optimization_iterations = 20
-run_test('iris.csv', 'Results', list(algorithms_dict.values()), random_state, external_split, internal_split, optimization_iterations)
+run_test('kc3.csv', 'Results', list(algorithms_dict.values()), random_state, external_split, internal_split, optimization_iterations)
 # test_models(random_state, external_split, internal_split, optimization_iterations)
 # test_meta_learner(random_state, external_split, internal_split, optimization_iterations)
