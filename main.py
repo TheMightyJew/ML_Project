@@ -1,3 +1,4 @@
+import copy
 import os
 import pandas as pd
 from sklearn.model_selection import StratifiedKFold
@@ -13,6 +14,7 @@ from WrappedModels.wrapper_xbart import Wrapper_xbart as wxbart
 import time
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
+from meta_learner import train_without_dataset, read_meta_features
 
 df_columns = ['Dataset Name', 'Algorithm Name', 'Cross Validation[1-10]', 'Hyper-Parameters Values', 'Accuracy', 'TPR',
               'FPR', 'Precision', 'AUC', 'PR Curve', 'Training Time', 'Inference Time']
@@ -185,13 +187,29 @@ def test_models(random_state, external_split, internal_split, optimization_itera
         run_test(filename, 'Results', models, random_state, external_split, internal_split, optimization_iterations)
 
 
-def get_best_model(filename):
-    return None
+def test_meta_learner(results_directory, meta_results_dir, oracle_directory):
+    X_total, Y_total, X_no_dataset = read_meta_features(results_directory)
+    success_num = 0
+    counter = 0
+    for filename in os.listdir(results_directory):
+        real_algorithm, predicted_algorithm = train_without_dataset(filename.replace('.csv', ''), X_total, Y_total, X_no_dataset)
+        df = pd.read_csv(results_directory + '/' + filename)
 
+        alg_df = df[df['Algorithm Name'] == predicted_algorithm]
+        alg_df['Algorithm Name'] = 'Meta Learner'
+        alg_df['Previous Algorithm'] = predicted_algorithm
+        alg_df.to_csv(meta_results_dir + '/' + filename, index=False)
 
-def test_meta_learner(random_state, external_split, internal_split, optimization_iterations):
-    for filename in os.listdir(directory):
-        best_model = get_best_model(filename)
+        alg_df = df[df['Algorithm Name'] == real_algorithm]
+        alg_df['Algorithm Name'] = 'Oracle'
+        alg_df['Previous Algorithm'] = real_algorithm
+        alg_df.to_csv(oracle_directory + '/' + filename, index=False)
+
+        success_num += int(real_algorithm == predicted_algorithm)
+        counter += 1
+
+    accuracy = success_num / counter
+    print(accuracy)
 
 
 special_filenames = ['iris', 'lupus', 'kidney', 'autos', 'analcatdata_germangss', 'braziltourism']
@@ -199,6 +217,6 @@ random_state = 42
 external_split = 10
 internal_split = 3
 optimization_iterations = 20
-run_test('kc3.csv', 'Results', list(algorithms_dict.values()), random_state, external_split, internal_split, optimization_iterations)
+# run_test('kc3.csv', 'Results', list(algorithms_dict.values()), random_state, external_split, internal_split, optimization_iterations)
 # test_models(random_state, external_split, internal_split, optimization_iterations)
-# test_meta_learner(random_state, external_split, internal_split, optimization_iterations)
+test_meta_learner('Results', 'Meta_Results', 'Oracle_Results')
