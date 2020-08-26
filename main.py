@@ -229,7 +229,7 @@ special_filenames = ['iris', 'lupus', 'kidney', 'autos', 'analcatdata_germangss'
 random_state = 42
 external_split = 10
 internal_split = 3
-optimization_iterations = 20
+optimization_iterations = 50
 # run_test('kc3.csv', 'Results', list(algorithms_dict.values()), random_state, external_split, internal_split, optimization_iterations)
 # test_models(random_state, external_split, internal_split, optimization_iterations)
 test_meta_learner('Results', 'Meta_Results', 'Oracle_Results')
