@@ -52,8 +52,18 @@ def train_without_dataset(dataset, X_total, Y_total, X_no_dataset):
     xgb_classifier.fit(X_train, Y_train['Class'].ravel())
 
     y_pred = xgb_classifier.predict_proba(X_test)
-    predicted_algorithm = algorithm_names[int(X_test.iloc[np.argmax(y_pred[:, 1])]['algorithm'])]
-    real_algorithm = algorithm_names[int(X_test.iloc[np.argmax(Y_test)]['algorithm'])]
+    pred_index = int(X_test.iloc[np.argmax(y_pred[:, 1])]['algorithm'])
+    predicted_algorithm = algorithm_names[pred_index]
+    best_indexes = []
+    best_grade = np.max(Y_test)[0]
+    for index, grade in enumerate(Y_test.values):
+        if grade == best_grade:
+            best_indexes.append(index)
+    best_algorithms = [algorithm_names[int(X_test.iloc[x]['algorithm'])] for x in best_indexes]
+    if predicted_algorithm in best_algorithms:
+        real_algorithm = predicted_algorithm
+    else:
+        real_algorithm = best_algorithms[0]
     '''
     print(y_pred)
     print(Y_test)
