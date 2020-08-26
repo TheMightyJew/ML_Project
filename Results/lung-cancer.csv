@@ -1,0 +1,41 @@
+Dataset Name,Algorithm Name,Cross Validation[1-10],Hyper-Parameters Values,Accuracy,TPR,FPR,Precision,AUC,PR Curve,Training Time,Inference Time
+lung-cancer,Adaboost,0,"{'learning_rate': 0.13911053916202465, 'n_estimators': 200}",0.25,0.25,0.75,0.16666666666666666,0.25,0.3333333333333333,5.8267600536346436,11.715948581695557
+lung-cancer,LightGBM,0,"{'n_estimators': 50, 'num_leaves': 100}",0.5,0.5,0.5,0.5,0.5,0.75,0.5936100482940674,0.0
+lung-cancer,Provably Robust Boosting,0,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.5,0.5,0.5,0.5,0.5,0.75,2.436969757080078,0.0
+lung-cancer,XBART,0,"{'alpha': 1.2621410049277337, 'beta': 0.11342597991746307, 'burnin': 0, 'max_depth_num': 5, 'num_sweeps': 40, 'num_trees': 200}",0.0,0.0,0.0,0.0,0.5,0.75,28.38397455215454,0.0
+lung-cancer,Adaboost,1,"{'learning_rate': 0.9206955354200199, 'n_estimators': 50}",0.0,0.0,1.0,0.0,0.0,0.29166666666666663,5.561196804046631,3.905653953552246
+lung-cancer,LightGBM,1,"{'n_estimators': 50, 'num_leaves': 100}",0.5,0.5,0.5,0.5,0.5,0.75,0.5779504776000977,0.0
+lung-cancer,Provably Robust Boosting,1,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.5,0.5,0.5,0.5,0.5,0.75,2.4682095050811768,0.0
+lung-cancer,XBART,1,"{'alpha': 1.2621410049277337, 'beta': 0.11342597991746307, 'burnin': 0, 'max_depth_num': 5, 'num_sweeps': 40, 'num_trees': 200}",0.0,0.0,0.0,0.0,0.5,0.75,28.711987018585205,3.9055347442626953
+lung-cancer,Adaboost,2,"{'learning_rate': 0.4793801861008835, 'n_estimators': 100}",1.0,1.0,0.0,1.0,1.0,1.0,5.639303684234619,5.207141240437825
+lung-cancer,LightGBM,2,"{'n_estimators': 50, 'num_leaves': 100}",0.6666666666666666,0.5,0.5,0.6666666666666666,0.5,0.75,0.5779886245727539,0.0
+lung-cancer,Provably Robust Boosting,2,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.3333333333333333,0.5,0.5,0.3333333333333333,0.5,0.75,2.577549695968628,0.0
+lung-cancer,XBART,2,"{'alpha': 1.2621410049277337, 'beta': 0.11342597991746307, 'burnin': 0, 'max_depth_num': 5, 'num_sweeps': 40, 'num_trees': 200}",0.0,0.0,0.0,0.0,0.5,0.75,29.602449417114258,0.0
+lung-cancer,Adaboost,3,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",0.6666666666666666,0.75,0.25,0.75,1.0,1.0,5.90486478805542,15.619913736979166
+lung-cancer,LightGBM,3,"{'n_estimators': 50, 'num_leaves': 100}",0.6666666666666666,0.5,0.5,0.6666666666666666,0.5,0.75,0.593573808670044,0.0
+lung-cancer,Provably Robust Boosting,3,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.3333333333333333,0.5,0.5,0.3333333333333333,0.5,0.75,2.5775492191314697,0.0
+lung-cancer,XBART,3,"{'alpha': 1.2621410049277337, 'beta': 0.11342597991746307, 'burnin': 0, 'max_depth_num': 5, 'num_sweeps': 40, 'num_trees': 200}",0.0,0.0,0.0,0.0,0.5,0.75,29.633692502975464,0.0
+lung-cancer,Adaboost,4,"{'learning_rate': 1.400042750373098, 'n_estimators': 50}",0.3333333333333333,0.25,0.75,0.25,0.5,0.5208333333333333,5.59243631362915,5.207459131876628
+lung-cancer,LightGBM,4,"{'n_estimators': 50, 'num_leaves': 100}",0.6666666666666666,0.5,0.5,0.6666666666666666,0.5,0.75,0.5779500007629395,5.207061767578125
+lung-cancer,Provably Robust Boosting,4,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.3333333333333333,0.5,0.5,0.3333333333333333,0.5,0.75,2.608792543411255,0.0
+lung-cancer,XBART,4,"{'alpha': 1.2621410049277337, 'beta': 0.11342597991746307, 'burnin': 0, 'max_depth_num': 5, 'num_sweeps': 40, 'num_trees': 200}",0.0,0.0,0.0,0.0,0.5,0.75,29.602412939071655,0.0
+lung-cancer,Adaboost,5,"{'learning_rate': 0.6787661614294043, 'n_estimators': 20}",0.6666666666666666,0.5,0.5,0.6666666666666666,0.0,0.29166666666666663,5.529955148696899,0.0
+lung-cancer,LightGBM,5,"{'n_estimators': 50, 'num_leaves': 100}",0.6666666666666666,0.5,0.5,0.6666666666666666,0.5,0.75,0.5623667240142822,0.0
+lung-cancer,Provably Robust Boosting,5,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.3333333333333333,0.5,0.5,0.3333333333333333,0.5,0.75,2.577548027038574,0.0
+lung-cancer,XBART,5,"{'alpha': 1.2621410049277337, 'beta': 0.11342597991746307, 'burnin': 0, 'max_depth_num': 5, 'num_sweeps': 40, 'num_trees': 200}",0.0,0.0,0.0,0.0,0.5,0.75,29.618072748184204,0.0
+lung-cancer,Adaboost,6,"{'learning_rate': 0.21035886311957896, 'n_estimators': 200}",0.3333333333333333,0.5,0.5,0.3333333333333333,0.0,0.29166666666666663,5.920487880706787,10.414361953735352
+lung-cancer,LightGBM,6,"{'n_estimators': 50, 'num_leaves': 100}",0.6666666666666666,0.5,0.5,0.6666666666666666,0.5,0.75,0.5779507160186768,0.0
+lung-cancer,Provably Robust Boosting,6,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.3333333333333333,0.5,0.5,0.3333333333333333,0.5,0.75,2.5775511264801025,0.0
+lung-cancer,XBART,6,"{'alpha': 1.2621410049277337, 'beta': 0.11342597991746307, 'burnin': 0, 'max_depth_num': 5, 'num_sweeps': 40, 'num_trees': 200}",0.0,0.0,0.0,0.0,0.5,0.75,29.60244083404541,0.0
+lung-cancer,Adaboost,7,"{'learning_rate': 0.6550748322169144, 'n_estimators': 50}",1.0,1.0,0.0,1.0,1.0,1.0,5.670555591583252,0.0
+lung-cancer,LightGBM,7,"{'n_estimators': 50, 'num_leaves': 100}",0.6666666666666666,0.5,0.5,0.6666666666666666,0.5,0.75,0.5779523849487305,5.206902821858724
+lung-cancer,Provably Robust Boosting,7,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.3333333333333333,0.5,0.5,0.3333333333333333,0.5,0.75,2.5306859016418457,0.0
+lung-cancer,XBART,7,"{'alpha': 1.2621410049277337, 'beta': 0.11342597991746307, 'burnin': 0, 'max_depth_num': 5, 'num_sweeps': 40, 'num_trees': 200}",0.0,0.0,1.0,0.0,0.0,0.25,29.618062496185303,0.0
+lung-cancer,Adaboost,8,"{'learning_rate': 0.4454674376934912, 'n_estimators': 20}",0.6666666666666666,0.5,0.5,0.6666666666666666,0.0,0.29166666666666663,5.623692989349365,0.0
+lung-cancer,LightGBM,8,"{'n_estimators': 50, 'num_leaves': 100}",0.6666666666666666,0.5,0.5,0.6666666666666666,0.5,0.75,0.5779502391815186,5.207220713297526
+lung-cancer,Provably Robust Boosting,8,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.3333333333333333,0.5,0.5,0.3333333333333333,0.5,0.75,2.56192946434021,0.0
+lung-cancer,XBART,8,"{'alpha': 1.2621410049277337, 'beta': 0.11342597991746307, 'burnin': 0, 'max_depth_num': 5, 'num_sweeps': 40, 'num_trees': 200}",0.0,0.0,0.0,0.0,0.5,0.75,29.618067264556885,0.0
+lung-cancer,Adaboost,9,"{'learning_rate': 1.254335218612733, 'n_estimators': 20}",0.3333333333333333,0.5,0.5,0.3333333333333333,0.5,0.5208333333333333,5.608061075210571,5.206902821858724
+lung-cancer,LightGBM,9,"{'n_estimators': 50, 'num_leaves': 100}",0.3333333333333333,0.5,0.5,0.3333333333333333,0.5,0.75,0.5935730934143066,0.0
+lung-cancer,Provably Robust Boosting,9,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.6666666666666666,0.5,0.5,0.6666666666666666,0.5,0.75,2.5619373321533203,0.0
+lung-cancer,XBART,9,"{'alpha': 1.2621410049277337, 'beta': 0.11342597991746307, 'burnin': 0, 'max_depth_num': 5, 'num_sweeps': 40, 'num_trees': 200}",0.0,0.0,0.0,0.0,0.5,0.75,29.69615125656128,5.210479100545247

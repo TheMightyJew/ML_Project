@@ -1,0 +1,41 @@
+Dataset Name,Algorithm Name,Cross Validation[1-10],Hyper-Parameters Values,Accuracy,TPR,FPR,Precision,AUC,PR Curve,Training Time,Inference Time
+diggle_table_a2,Adaboost,0,"{'learning_rate': 0.39643541684062933, 'n_estimators': 20}",1.0,1.0,0.0,1.0,1.0,1.0,0.23440027236938477,0.0
+diggle_table_a2,LightGBM,0,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,0.5781474113464355,0.0
+diggle_table_a2,Provably Robust Boosting,0,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.5161290322580645,0.5,0.5,0.5161290322580645,0.5,0.75,19.463618993759155,0.0
+diggle_table_a2,XBART,0,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,27.486916065216064,0.0
+diggle_table_a2,Adaboost,1,"{'learning_rate': 0.6780602616231216, 'n_estimators': 100}",1.0,1.0,0.0,1.0,1.0,1.0,0.2344050407409668,0.0
+diggle_table_a2,LightGBM,1,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,0.5781590938568115,0.0
+diggle_table_a2,Provably Robust Boosting,1,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.5161290322580645,0.5,0.5,0.5161290322580645,0.5,0.75,20.333739519119263,0.0
+diggle_table_a2,XBART,1,"{'alpha': 1.7857042108950205, 'beta': 0.9972083578077036, 'burnin': 0, 'max_depth_num': 5, 'num_sweeps': 80, 'num_trees': 50}",1.0,1.0,0.0,1.0,1.0,1.0,28.44015622138977,0.5040937854397682
+diggle_table_a2,Adaboost,2,"{'learning_rate': 0.4454674376934912, 'n_estimators': 20}",1.0,1.0,0.0,1.0,1.0,1.0,0.23439598083496094,0.0
+diggle_table_a2,LightGBM,2,"{'n_estimators': 50, 'num_leaves': 100}",0.9354838709677419,0.9354166666666667,0.06458333333333333,0.9354166666666667,0.9958333333333333,0.9959515420751635,0.6094121932983398,0.0
+diggle_table_a2,Provably Robust Boosting,2,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.5161290322580645,0.5,0.5,0.5161290322580645,0.5,0.75,20.19784665107727,0.0
+diggle_table_a2,XBART,2,"{'alpha': 1.5199082092610237, 'beta': 1.1254150515392516, 'burnin': 5, 'max_depth_num': 6, 'num_sweeps': 60, 'num_trees': 20}",0.967741935483871,0.9666666666666667,0.03333333333333333,0.9705882352941176,0.9958333333333333,0.9959515420751635,27.611954927444458,0.0
+diggle_table_a2,Adaboost,3,"{'learning_rate': 0.9206955354200199, 'n_estimators': 50}",1.0,1.0,0.0,1.0,1.0,1.0,0.23441123962402344,0.0
+diggle_table_a2,LightGBM,3,"{'n_estimators': 50, 'num_leaves': 100}",0.967741935483871,0.9666666666666667,0.03333333333333333,0.9705882352941176,1.0,1.0,0.609393835067749,0.0
+diggle_table_a2,Provably Robust Boosting,3,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.5161290322580645,0.5,0.5,0.5161290322580645,0.5,0.75,20.178712368011475,0.0
+diggle_table_a2,XBART,3,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,27.47131657600403,0.0
+diggle_table_a2,Adaboost,4,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,0.21878266334533691,0.0
+diggle_table_a2,LightGBM,4,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,0.6093971729278564,0.0
+diggle_table_a2,Provably Robust Boosting,4,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.5161290322580645,0.5,0.5,0.5161290322580645,0.5,0.75,19.727336645126343,0.5049474777713899
+diggle_table_a2,XBART,4,"{'alpha': 1.9028825207813331, 'beta': 1.9347008628416629, 'burnin': 10, 'max_depth_num': 4, 'num_sweeps': 20, 'num_trees': 200}",1.0,1.0,0.0,1.0,1.0,1.0,28.237135410308838,0.0
+diggle_table_a2,Adaboost,5,"{'learning_rate': 1.4907884894416696, 'n_estimators': 100}",1.0,1.0,0.0,1.0,1.0,1.0,0.23439788818359375,0.0
+diggle_table_a2,LightGBM,5,"{'n_estimators': 20, 'num_leaves': 5}",1.0,1.0,0.0,1.0,1.0,1.0,0.5937864780426025,0.0
+diggle_table_a2,Provably Robust Boosting,5,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.5483870967741935,0.5,0.5,0.5483870967741935,0.5,0.75,20.144862413406372,0.0
+diggle_table_a2,XBART,5,"{'alpha': 0.5579483854494223, 'beta': 1.3982006857683706, 'burnin': 5, 'max_depth_num': 6, 'num_sweeps': 20, 'num_trees': 20}",1.0,1.0,0.0,1.0,1.0,1.0,27.299564123153687,0.0
+diggle_table_a2,Adaboost,6,"{'learning_rate': 1.4907884894416696, 'n_estimators': 100}",1.0,1.0,0.0,1.0,1.0,1.0,0.23439383506774902,0.0
+diggle_table_a2,LightGBM,6,"{'n_estimators': 20, 'num_leaves': 5}",1.0,1.0,0.0,1.0,1.0,1.0,0.6094181537628174,0.5040937854397682
+diggle_table_a2,Provably Robust Boosting,6,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.5483870967741935,0.5,0.5,0.5483870967741935,0.5,0.75,20.190999031066895,0.0
+diggle_table_a2,XBART,6,"{'alpha': 0.5579483854494223, 'beta': 1.3982006857683706, 'burnin': 5, 'max_depth_num': 6, 'num_sweeps': 20, 'num_trees': 20}",1.0,1.0,0.0,1.0,1.0,1.0,27.674585103988647,0.0
+diggle_table_a2,Adaboost,7,"{'learning_rate': 1.6816410175208014, 'n_estimators': 20}",1.0,1.0,0.0,1.0,1.0,1.0,0.2344040870666504,0.0
+diggle_table_a2,LightGBM,7,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,0.6094043254852295,0.0
+diggle_table_a2,Provably Robust Boosting,7,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.5483870967741935,0.5,0.5,0.5483870967741935,0.5,0.75,20.17212986946106,0.0
+diggle_table_a2,XBART,7,"{'alpha': 1.7857042108950205, 'beta': 0.9972083578077036, 'burnin': 0, 'max_depth_num': 5, 'num_sweeps': 80, 'num_trees': 50}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,28.58091163635254,0.5041014763616747
+diggle_table_a2,Adaboost,8,"{'learning_rate': 0.6550748322169144, 'n_estimators': 50}",1.0,1.0,0.0,1.0,1.0,1.0,0.23440861701965332,0.0
+diggle_table_a2,LightGBM,8,"{'n_estimators': 20, 'num_leaves': 5}",1.0,1.0,0.0,1.0,1.0,1.0,0.5937774181365967,0.5040860945178617
+diggle_table_a2,Provably Robust Boosting,8,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.5483870967741935,0.5,0.5,0.5483870967741935,0.5,0.75,20.213632345199585,0.0
+diggle_table_a2,XBART,8,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,27.612070083618164,0.0
+diggle_table_a2,Adaboost,9,"{'learning_rate': 0.13911053916202465, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,0.23439860343933105,0.0
+diggle_table_a2,LightGBM,9,"{'n_estimators': 20, 'num_leaves': 5}",1.0,1.0,0.0,1.0,1.0,1.0,0.6094150543212891,0.0
+diggle_table_a2,Provably Robust Boosting,9,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.5483870967741935,0.5,0.5,0.5483870967741935,0.5,0.75,19.507277727127075,0.0
+diggle_table_a2,XBART,9,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,27.471434354782104,0.0

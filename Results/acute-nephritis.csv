@@ -1,0 +1,41 @@
+Dataset Name,Algorithm Name,Cross Validation[1-10],Hyper-Parameters Values,Accuracy,TPR,FPR,Precision,AUC,PR Curve,Training Time,Inference Time
+acute-nephritis,Adaboost,0,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,3.9846842288970947,3.9074619611104326
+acute-nephritis,LightGBM,0,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,0.6562690734863281,0.0
+acute-nephritis,Provably Robust Boosting,0,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,6.172368288040161,1.3021230697631836
+acute-nephritis,XBART,0,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",0.0,0.0,0.0,0.0,0.5,0.75,15.95440411567688,0.0
+acute-nephritis,Adaboost,1,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,3.9691028594970703,2.604405085245768
+acute-nephritis,LightGBM,1,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,0.6562690734863281,0.0
+acute-nephritis,Provably Robust Boosting,1,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",0.8333333333333334,0.8571428571428572,0.14285714285714285,0.8571428571428572,1.0,1.0,6.187993764877319,0.0
+acute-nephritis,XBART,1,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,16.016927003860474,0.0
+acute-nephritis,Adaboost,2,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,4.01594614982605,2.6044845581054688
+acute-nephritis,LightGBM,2,"{'n_estimators': 100, 'num_leaves': 50}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,0.7656629085540771,0.0
+acute-nephritis,Provably Robust Boosting,2,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",0.8333333333333334,0.8571428571428572,0.14285714285714285,0.8571428571428572,1.0,1.0,6.234872817993164,1.302182674407959
+acute-nephritis,XBART,2,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,15.907555103302002,0.0
+acute-nephritis,Adaboost,3,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,4.000339508056641,2.604524294535319
+acute-nephritis,LightGBM,3,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,0.6094009876251221,0.0
+acute-nephritis,Provably Robust Boosting,3,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",0.75,0.7857142857142857,0.21428571428571427,0.8125,1.0,1.0,6.156741619110107,1.302162806193034
+acute-nephritis,XBART,3,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",0.0,0.0,0.0,0.0,0.5,0.75,15.876364946365356,0.0
+acute-nephritis,Adaboost,4,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,3.9847164154052734,3.906428813934326
+acute-nephritis,LightGBM,4,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,0.7187798023223877,0.0
+acute-nephritis,Provably Robust Boosting,4,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",0.8333333333333334,0.8571428571428572,0.14285714285714285,0.8571428571428572,1.0,1.0,6.18803334236145,1.302182674407959
+acute-nephritis,XBART,4,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,15.907652616500854,1.301586627960205
+acute-nephritis,Adaboost,5,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",0.9166666666666666,0.9285714285714286,0.07142857142857142,0.9166666666666667,1.0,1.0,4.000363349914551,3.9055943489074707
+acute-nephritis,LightGBM,5,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,0.7969231605529785,1.302202542622884
+acute-nephritis,Provably Robust Boosting,5,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",0.8333333333333334,0.8571428571428572,0.14285714285714285,0.8571428571428572,1.0,1.0,6.203659534454346,1.302182674407959
+acute-nephritis,XBART,5,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,15.813887596130371,0.0
+acute-nephritis,Adaboost,6,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,3.953479528427124,2.604027589162191
+acute-nephritis,LightGBM,6,"{'n_estimators': 200, 'num_leaves': 5}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,0.5625245571136475,0.0
+acute-nephritis,Provably Robust Boosting,6,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",0.75,0.7857142857142857,0.21428571428571427,0.8125,1.0,1.0,6.1567816734313965,1.302182674407959
+acute-nephritis,XBART,6,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,16.063887357711792,0.0
+acute-nephritis,Adaboost,7,"{'learning_rate': 1.9347008628416629, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,4.000346660614014,3.906548023223877
+acute-nephritis,LightGBM,7,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,0.8594458103179932,1.3022224108378093
+acute-nephritis,Provably Robust Boosting,7,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",0.8333333333333334,0.8571428571428572,0.14285714285714285,0.8571428571428572,1.0,1.0,6.156780481338501,0.0
+acute-nephritis,XBART,7,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,15.767005920410156,0.0
+acute-nephritis,Adaboost,8,"{'learning_rate': 1.9347008628416629, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,4.000342845916748,2.604842185974121
+acute-nephritis,LightGBM,8,"{'n_estimators': 200, 'num_leaves': 5}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,0.5625145435333252,0.0
+acute-nephritis,Provably Robust Boosting,8,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",0.9166666666666666,0.9285714285714286,0.07142857142857142,0.9166666666666667,1.0,1.0,6.281791925430298,1.3021230697631836
+acute-nephritis,XBART,8,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,15.876392602920532,0.0
+acute-nephritis,Adaboost,9,"{'learning_rate': 1.9347008628416629, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,4.074229001998901,3.4674803415934243
+acute-nephritis,LightGBM,9,"{'n_estimators': 100, 'num_leaves': 50}",1.0,1.0,0.0,1.0,1.0,1.0,0.6567318439483643,0.2506375312805176
+acute-nephritis,Provably Robust Boosting,9,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",0.8333333333333334,0.8571428571428572,0.14285714285714285,0.8571428571428572,1.0,1.0,6.206355094909668,1.302202542622884
+acute-nephritis,XBART,9,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,15.86471676826477,1.3031363487243652

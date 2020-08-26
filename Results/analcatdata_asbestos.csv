@@ -1,0 +1,41 @@
+Dataset Name,Algorithm Name,Cross Validation[1-10],Hyper-Parameters Values,Accuracy,TPR,FPR,Precision,AUC,PR Curve,Training Time,Inference Time
+analcatdata_asbestos,Adaboost,0,"{'learning_rate': 0.39643541684062933, 'n_estimators': 20}",0.5555555555555556,0.55,0.45,0.55,0.575,0.5477579365079365,5.344210386276245,1.7363230387369792
+analcatdata_asbestos,LightGBM,0,"{'n_estimators': 50, 'num_leaves': 100}",0.5555555555555556,0.525,0.475,0.5357142857142857,0.55,0.5325793650793651,0.5469014644622803,0.0
+analcatdata_asbestos,Provably Robust Boosting,0,"{'max_depth': 2, 'min_samples_leaf': 10, 'min_samples_split': 50}",0.5555555555555556,0.55,0.45,0.55,0.5499999999999999,0.6611111111111111,4.969178676605225,1.736270056830512
+analcatdata_asbestos,XBART,0,"{'alpha': 1.5199082092610237, 'beta': 1.1254150515392516, 'burnin': 5, 'max_depth_num': 6, 'num_sweeps': 60, 'num_trees': 20}",0.4444444444444444,0.425,0.575,0.41666666666666663,0.6,0.5962301587301587,5.187951564788818,0.0
+analcatdata_asbestos,Adaboost,1,"{'learning_rate': 1.2255876808378807, 'n_estimators': 20}",0.6666666666666666,0.675,0.325,0.675,0.725,0.7562500000000001,5.391090393066406,0.0
+analcatdata_asbestos,LightGBM,1,"{'n_estimators': 50, 'num_leaves': 100}",0.8888888888888888,0.875,0.125,0.9166666666666667,1.0,1.0,0.5312929153442383,0.0
+analcatdata_asbestos,Provably Robust Boosting,1,"{'max_depth': 2, 'min_samples_leaf': 10, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,3.8284549713134766,0.0
+analcatdata_asbestos,XBART,1,"{'alpha': 1.9681386830328975, 'beta': 0.9868494971711618, 'burnin': 15, 'max_depth_num': 5, 'num_sweeps': 40, 'num_trees': 50}",1.0,1.0,0.0,1.0,1.0,1.0,5.281705617904663,0.0
+analcatdata_asbestos,Adaboost,2,"{'learning_rate': 1.262520499972521, 'n_estimators': 20}",1.0,1.0,0.0,1.0,1.0,1.0,5.3754637241363525,1.736270056830512
+analcatdata_asbestos,LightGBM,2,"{'n_estimators': 50, 'num_leaves': 100}",0.8888888888888888,0.875,0.125,0.9166666666666667,1.0,1.0,0.5312960147857666,1.736270056830512
+analcatdata_asbestos,Provably Robust Boosting,2,"{'max_depth': 2, 'min_samples_leaf': 10, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,3.8597068786621094,1.7362965477837458
+analcatdata_asbestos,XBART,2,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,5.172343969345093,1.737091276380751
+analcatdata_asbestos,Adaboost,3,"{'learning_rate': 0.21035886311957896, 'n_estimators': 200}",0.75,0.75,0.25,0.75,0.8125,0.825297619047619,5.641114234924316,5.85860013961792
+analcatdata_asbestos,LightGBM,3,"{'n_estimators': 20, 'num_leaves': 5}",0.625,0.625,0.375,0.6333333333333333,0.78125,0.7875,0.5468928813934326,13.67291808128357
+analcatdata_asbestos,Provably Robust Boosting,3,"{'max_depth': 2, 'min_samples_leaf': 10, 'min_samples_split': 50}",0.625,0.625,0.375,0.6333333333333333,0.625,0.7229166666666667,4.641026020050049,1.9532442092895508
+analcatdata_asbestos,XBART,3,"{'alpha': 0.6550748322169144, 'beta': 0.7960875022580142, 'burnin': 2, 'max_depth_num': 6, 'num_sweeps': 20, 'num_trees': 100}",0.625,0.625,0.375,0.6333333333333333,0.75,0.7226190476190476,5.266111373901367,1.9533932209014893
+analcatdata_asbestos,Adaboost,4,"{'learning_rate': 0.39643541684062933, 'n_estimators': 20}",0.875,0.875,0.125,0.9,1.0,1.0,5.359825134277344,1.9533634185791016
+analcatdata_asbestos,LightGBM,4,"{'n_estimators': 50, 'num_leaves': 100}",0.875,0.875,0.125,0.9,0.9375,0.94375,0.5468997955322266,0.0
+analcatdata_asbestos,Provably Robust Boosting,4,"{'max_depth': 2, 'min_samples_leaf': 10, 'min_samples_split': 50}",0.75,0.75,0.25,0.8333333333333333,0.75,0.8541666666666666,4.6410253047943115,1.9533336162567139
+analcatdata_asbestos,XBART,4,"{'alpha': 1.9681386830328975, 'beta': 0.9868494971711618, 'burnin': 15, 'max_depth_num': 5, 'num_sweeps': 40, 'num_trees': 50}",0.875,0.875,0.125,0.9,0.9375,0.94375,5.328618764877319,0.0
+analcatdata_asbestos,Adaboost,5,"{'learning_rate': 1.262520499972521, 'n_estimators': 20}",0.875,0.875,0.125,0.9,0.875,0.8875,5.344208478927612,0.0
+analcatdata_asbestos,LightGBM,5,"{'n_estimators': 50, 'num_leaves': 100}",0.875,0.875,0.125,0.9,1.0,1.0,0.5468919277191162,0.0
+analcatdata_asbestos,Provably Robust Boosting,5,"{'max_depth': 2, 'min_samples_leaf': 10, 'min_samples_split': 50}",0.75,0.75,0.25,0.8333333333333333,0.75,0.8541666666666666,4.6410253047943115,1.9532740116119385
+analcatdata_asbestos,XBART,5,"{'alpha': 1.9028825207813331, 'beta': 1.9347008628416629, 'burnin': 10, 'max_depth_num': 4, 'num_sweeps': 20, 'num_trees': 200}",0.75,0.75,0.25,0.8333333333333333,1.0,1.0,5.453627347946167,0.0
+analcatdata_asbestos,Adaboost,6,"{'learning_rate': 0.39643541684062933, 'n_estimators': 20}",0.625,0.625,0.375,0.6333333333333333,0.875,0.8895833333333334,5.344193458557129,0.0
+analcatdata_asbestos,LightGBM,6,"{'n_estimators': 100, 'num_leaves': 50}",0.625,0.625,0.375,0.6333333333333333,0.8125,0.825297619047619,0.5781533718109131,0.0
+analcatdata_asbestos,Provably Robust Boosting,6,"{'max_depth': 2, 'min_samples_leaf': 10, 'min_samples_split': 50}",0.75,0.75,0.25,0.75,0.75,0.8125,4.656651973724365,0.0
+analcatdata_asbestos,XBART,6,"{'alpha': 1.9028825207813331, 'beta': 1.9347008628416629, 'burnin': 10, 'max_depth_num': 4, 'num_sweeps': 20, 'num_trees': 200}",0.625,0.625,0.375,0.6333333333333333,0.8125,0.825297619047619,5.594265937805176,0.0
+analcatdata_asbestos,Adaboost,7,"{'learning_rate': 1.2255876808378807, 'n_estimators': 20}",0.875,0.8333333333333333,0.16666666666666666,0.9166666666666667,1.0,1.0,5.4067158699035645,1.951754093170166
+analcatdata_asbestos,LightGBM,7,"{'n_estimators': 50, 'num_leaves': 100}",0.75,0.7333333333333334,0.26666666666666666,0.7333333333333334,0.9333333333333333,0.9330555555555555,0.5312755107879639,1.9532740116119385
+analcatdata_asbestos,Provably Robust Boosting,7,"{'max_depth': 2, 'min_samples_leaf': 10, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,4.656651973724365,1.9533336162567139
+analcatdata_asbestos,XBART,7,"{'alpha': 1.9681386830328975, 'beta': 0.9868494971711618, 'burnin': 15, 'max_depth_num': 5, 'num_sweeps': 40, 'num_trees': 50}",1.0,1.0,0.0,1.0,1.0,1.0,5.406736373901367,1.9532442092895508
+analcatdata_asbestos,Adaboost,8,"{'learning_rate': 0.39643541684062933, 'n_estimators': 20}",0.625,0.6333333333333333,0.3666666666666667,0.625,0.6666666666666666,0.7017261904761904,5.359820604324341,0.0
+analcatdata_asbestos,LightGBM,8,"{'n_estimators': 50, 'num_leaves': 100}",0.625,0.6333333333333333,0.3666666666666667,0.625,0.8333333333333333,0.8624999999999999,0.6563036441802979,0.0
+analcatdata_asbestos,Provably Robust Boosting,8,"{'max_depth': 2, 'min_samples_leaf': 10, 'min_samples_split': 50}",0.625,0.7,0.3,0.75,0.7,0.81875,4.609771966934204,1.9533038139343262
+analcatdata_asbestos,XBART,8,"{'alpha': 0.6576275319642724, 'beta': 0.12675166315866046, 'burnin': 1, 'max_depth_num': 5, 'num_sweeps': 80, 'num_trees': 100}",0.625,0.6333333333333333,0.3666666666666667,0.625,0.7333333333333333,0.7851587301587302,5.531749486923218,0.0
+analcatdata_asbestos,Adaboost,9,"{'learning_rate': 0.39643541684062933, 'n_estimators': 20}",0.75,0.8,0.2,0.8,0.7666666666666666,0.781547619047619,5.328585624694824,1.9531548023223877
+analcatdata_asbestos,LightGBM,9,"{'n_estimators': 50, 'num_leaves': 100}",0.625,0.5666666666666667,0.43333333333333335,0.5833333333333333,0.8333333333333334,0.8048611111111111,0.5312740802764893,1.9532442092895508
+analcatdata_asbestos,Provably Robust Boosting,9,"{'max_depth': 2, 'min_samples_leaf': 10, 'min_samples_split': 50}",0.75,0.7333333333333334,0.26666666666666666,0.7333333333333334,0.6666666666666665,0.7269444444444444,4.656651020050049,1.9533038139343262
+analcatdata_asbestos,XBART,9,"{'alpha': 1.9028825207813331, 'beta': 1.9347008628416629, 'burnin': 10, 'max_depth_num': 4, 'num_sweeps': 20, 'num_trees': 200}",0.75,0.7333333333333334,0.26666666666666666,0.7333333333333334,0.7333333333333333,0.7562698412698412,5.516123294830322,0.0

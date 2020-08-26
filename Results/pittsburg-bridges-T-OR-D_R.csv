@@ -1,0 +1,41 @@
+Dataset Name,Algorithm Name,Cross Validation[1-10],Hyper-Parameters Values,Accuracy,TPR,FPR,Precision,AUC,PR Curve,Training Time,Inference Time
+pittsburg-bridges-T-OR-D_R,Adaboost,0,"{'learning_rate': 0.9665329700123682, 'n_estimators': 200}",0.7272727272727273,0.6388888888888888,0.3611111111111111,0.6041666666666666,0.6666666666666667,0.7474977954144622,7.451399564743042,4.26030158996582
+pittsburg-bridges-T-OR-D_R,LightGBM,0,"{'n_estimators': 50, 'num_leaves': 100}",0.8181818181818182,0.5,0.5,0.8181818181818182,0.888888888888889,0.6977272727272728,1.5308585166931152,1.4200644059614702
+pittsburg-bridges-T-OR-D_R,Provably Robust Boosting,0,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.8181818181818182,0.5,0.5,0.8181818181818182,0.5,0.75,7.732579469680786,0.0
+pittsburg-bridges-T-OR-D_R,XBART,0,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",0.9090909090909091,0.75,0.25,0.95,0.9444444444444444,0.8899691358024691,17.042847871780396,0.0
+pittsburg-bridges-T-OR-D_R,Adaboost,1,"{'learning_rate': 1.2421185223120967, 'n_estimators': 100}",0.7272727272727273,0.4444444444444444,0.5555555555555556,0.4,0.7222222222222222,0.5959636042969377,7.170172452926636,2.840388904918324
+pittsburg-bridges-T-OR-D_R,LightGBM,1,"{'n_estimators': 50, 'num_leaves': 100}",0.8181818181818182,0.5,0.5,0.8181818181818182,0.8333333333333334,0.8112764550264551,1.5464792251586914,1.4200427315451882
+pittsburg-bridges-T-OR-D_R,Provably Robust Boosting,1,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.8181818181818182,0.5,0.5,0.8181818181818182,0.5,0.75,7.888794898986816,1.4200644059614702
+pittsburg-bridges-T-OR-D_R,XBART,1,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",0.8181818181818182,0.5,0.5,0.8181818181818182,1.0,1.0,16.995978355407715,0.0
+pittsburg-bridges-T-OR-D_R,Adaboost,2,"{'learning_rate': 1.2421185223120967, 'n_estimators': 100}",0.9,0.9444444444444444,0.05555555555555555,0.75,1.0,1.0,7.170170545578003,1.5622615814208984
+pittsburg-bridges-T-OR-D_R,LightGBM,2,"{'n_estimators': 50, 'num_leaves': 100}",0.9,0.9444444444444444,0.05555555555555555,0.75,0.9444444444444444,0.8722222222222222,1.5464811325073242,1.5619277954101562
+pittsburg-bridges-T-OR-D_R,Provably Robust Boosting,2,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.9,0.5,0.5,0.9,0.5,0.75,8.013760328292847,1.562356948852539
+pittsburg-bridges-T-OR-D_R,XBART,2,"{'alpha': 0.28995234005420545, 'beta': 0.9725728947351475, 'burnin': 2, 'max_depth_num': 3, 'num_sweeps': 60, 'num_trees': 20}",0.9,0.5,0.5,0.9,0.6666666666666667,0.542636684303351,17.105334520339966,0.0
+pittsburg-bridges-T-OR-D_R,Adaboost,3,"{'learning_rate': 0.22359802667203107, 'n_estimators': 200}",0.9,0.5,0.5,0.9,1.0,1.0,7.373229026794434,4.686427116394043
+pittsburg-bridges-T-OR-D_R,LightGBM,3,"{'n_estimators': 50, 'num_leaves': 100}",0.9,0.5,0.5,0.9,1.0,1.0,1.5621309280395508,1.5620231628417969
+pittsburg-bridges-T-OR-D_R,Provably Robust Boosting,3,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.9,0.5,0.5,0.9,0.5,0.75,8.326158285140991,0.0
+pittsburg-bridges-T-OR-D_R,XBART,3,"{'alpha': 1.9028825207813331, 'beta': 1.9347008628416629, 'burnin': 10, 'max_depth_num': 4, 'num_sweeps': 20, 'num_trees': 200}",0.9,0.5,0.5,0.9,0.8888888888888888,0.6191358024691358,17.964504718780518,0.0
+pittsburg-bridges-T-OR-D_R,Adaboost,4,"{'learning_rate': 0.9206955354200199, 'n_estimators': 50}",0.9,0.5,0.5,0.9,0.8888888888888888,0.6191358024691358,7.092077016830444,1.562809944152832
+pittsburg-bridges-T-OR-D_R,LightGBM,4,"{'n_estimators': 50, 'num_leaves': 100}",0.9,0.5,0.5,0.9,1.0,1.0,1.5308523178100586,0.0
+pittsburg-bridges-T-OR-D_R,Provably Robust Boosting,4,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.9,0.5,0.5,0.9,0.5,0.75,8.091864824295044,1.5622615814208984
+pittsburg-bridges-T-OR-D_R,XBART,4,"{'alpha': 1.9028825207813331, 'beta': 1.9347008628416629, 'burnin': 10, 'max_depth_num': 4, 'num_sweeps': 20, 'num_trees': 200}",0.9,0.5,0.5,0.9,1.0,1.0,17.652055263519287,0.0
+pittsburg-bridges-T-OR-D_R,Adaboost,5,"{'learning_rate': 1.2421185223120967, 'n_estimators': 100}",0.9,0.5,0.5,0.9,1.0,1.0,7.185837268829346,3.1244754791259766
+pittsburg-bridges-T-OR-D_R,LightGBM,5,"{'n_estimators': 50, 'num_leaves': 100}",0.8,0.4444444444444444,0.5555555555555556,0.4444444444444444,0.6666666666666667,0.542636684303351,1.5620989799499512,1.5617847442626953
+pittsburg-bridges-T-OR-D_R,Provably Robust Boosting,5,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.9,0.5,0.5,0.9,0.5,0.75,8.419918060302734,1.562333106994629
+pittsburg-bridges-T-OR-D_R,XBART,5,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",0.9,0.5,0.5,0.9,1.0,1.0,17.308409690856934,0.0
+pittsburg-bridges-T-OR-D_R,Adaboost,6,"{'learning_rate': 1.4907884894416696, 'n_estimators': 100}",0.8,0.8888888888888888,0.1111111111111111,0.6666666666666666,0.7777777777777778,0.5709104938271605,7.185805320739746,1.5620708465576172
+pittsburg-bridges-T-OR-D_R,LightGBM,6,"{'n_estimators': 50, 'num_leaves': 100}",0.8,0.4444444444444444,0.5555555555555556,0.4444444444444444,0.7777777777777778,0.5709104938271605,1.5464727878570557,1.5622615814208984
+pittsburg-bridges-T-OR-D_R,Provably Robust Boosting,6,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.9,0.5,0.5,0.9,0.5,0.75,8.076243162155151,0.0
+pittsburg-bridges-T-OR-D_R,XBART,6,"{'alpha': 0.28995234005420545, 'beta': 0.9725728947351475, 'burnin': 2, 'max_depth_num': 3, 'num_sweeps': 60, 'num_trees': 20}",0.8,0.4444444444444444,0.5555555555555556,0.4444444444444444,0.5555555555555556,0.5215388007054674,17.16779351234436,0.0
+pittsburg-bridges-T-OR-D_R,Adaboost,7,"{'learning_rate': 0.6550748322169144, 'n_estimators': 50}",0.9,0.5,0.5,0.9,0.33333333333333337,0.48456790123456794,7.076487302780151,1.562643051147461
+pittsburg-bridges-T-OR-D_R,LightGBM,7,"{'n_estimators': 50, 'num_leaves': 100}",0.9,0.5,0.5,0.9,0.0,0.3919091710758378,1.5464718341827393,0.0
+pittsburg-bridges-T-OR-D_R,Provably Robust Boosting,7,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.9,0.5,0.5,0.9,0.5,0.75,8.123098850250244,0.0
+pittsburg-bridges-T-OR-D_R,XBART,7,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",0.9,0.5,0.5,0.9,0.5555555555555556,0.5215388007054674,17.29275941848755,0.0
+pittsburg-bridges-T-OR-D_R,Adaboost,8,"{'learning_rate': 1.400042750373098, 'n_estimators': 50}",0.8,0.5,0.5,0.8,0.6875,0.5852926587301588,7.107723712921143,1.5621423721313477
+pittsburg-bridges-T-OR-D_R,LightGBM,8,"{'n_estimators': 50, 'num_leaves': 100}",0.8,0.5,0.5,0.8,0.5,0.5092261904761904,1.5464754104614258,1.5621662139892578
+pittsburg-bridges-T-OR-D_R,Provably Robust Boosting,8,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.8,0.5,0.5,0.8,0.5,0.75,8.060628175735474,0.0
+pittsburg-bridges-T-OR-D_R,XBART,8,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",0.8,0.5,0.5,0.8,0.9375,0.8884548611111112,17.324031591415405,0.0
+pittsburg-bridges-T-OR-D_R,Adaboost,9,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",0.8,0.6875,0.3125,0.6875,0.9375,0.8884548611111112,7.373251438140869,4.685759544372559
+pittsburg-bridges-T-OR-D_R,LightGBM,9,"{'n_estimators': 50, 'num_leaves': 100}",0.9,0.75,0.25,0.9444444444444444,0.625,0.7299355158730159,1.53086256980896,1.5619754791259766
+pittsburg-bridges-T-OR-D_R,Provably Robust Boosting,9,"{'max_depth': 4, 'min_samples_leaf': 500, 'min_samples_split': 50}",0.8,0.5,0.5,0.8,0.5,0.75,7.763821125030518,0.0
+pittsburg-bridges-T-OR-D_R,XBART,9,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,17.292789459228516,0.0

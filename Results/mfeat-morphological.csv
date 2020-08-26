@@ -1,0 +1,41 @@
+Dataset Name,Algorithm Name,Cross Validation[1-10],Hyper-Parameters Values,Accuracy,TPR,FPR,Precision,AUC,PR Curve,Training Time,Inference Time
+mfeat-morphological,Adaboost,0,"{'learning_rate': 0.21035886311957896, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,6.139148712158203,0.23432016372680664
+mfeat-morphological,LightGBM,0,"{'n_estimators': 50, 'num_leaves': 10}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,1.5777544975280762,0.0
+mfeat-morphological,Provably Robust Boosting,0,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,67.43732833862305,0.07810592651367188
+mfeat-morphological,XBART,0,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,50.23824214935303,0.0781106948852539
+mfeat-morphological,Adaboost,1,"{'learning_rate': 0.39643541684062933, 'n_estimators': 20}",1.0,1.0,0.0,1.0,1.0,1.0,8.341787099838257,0.07810592651367188
+mfeat-morphological,LightGBM,1,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,1.7183187007904053,0.0
+mfeat-morphological,Provably Robust Boosting,1,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,73.84207820892334,0.07810592651367188
+mfeat-morphological,XBART,1,"{'alpha': 0.6550748322169144, 'beta': 0.7960875022580142, 'burnin': 2, 'max_depth_num': 6, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,48.48867845535278,0.0781095027923584
+mfeat-morphological,Adaboost,2,"{'learning_rate': 0.6787661614294043, 'n_estimators': 20}",1.0,1.0,0.0,1.0,1.0,1.0,5.623682737350464,0.0
+mfeat-morphological,LightGBM,2,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,1.6402027606964111,0.0
+mfeat-morphological,Provably Robust Boosting,2,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,67.53105592727661,0.0781106948852539
+mfeat-morphological,XBART,2,"{'alpha': 1.5199082092610237, 'beta': 1.1254150515392516, 'burnin': 5, 'max_depth_num': 6, 'num_sweeps': 60, 'num_trees': 20}",1.0,1.0,0.0,1.0,1.0,1.0,52.08155107498169,0.0
+mfeat-morphological,Adaboost,3,"{'learning_rate': 1.9347008628416629, 'n_estimators': 200}",0.99,0.95,0.05,0.9945054945054945,0.9873611111111111,0.983092480219837,8.669844150543213,0.23432016372680664
+mfeat-morphological,LightGBM,3,"{'n_estimators': 50, 'num_leaves': 100}",0.99,0.95,0.05,0.9945054945054945,0.9980555555555556,0.9921445056049776,1.6089966297149658,0.0781106948852539
+mfeat-morphological,Provably Robust Boosting,3,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",0.99,0.95,0.05,0.9945054945054945,0.95,0.9747527472527473,69.2806465625763,0.07810711860656738
+mfeat-morphological,XBART,3,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",0.9,0.5,0.5,0.9,0.9838888888888888,0.8809579144181199,39.89693331718445,0.07815718650817871
+mfeat-morphological,Adaboost,4,"{'learning_rate': 1.6816410175208014, 'n_estimators': 20}",1.0,1.0,0.0,1.0,1.0,1.0,5.701793670654297,0.07809042930603027
+mfeat-morphological,LightGBM,4,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,1.6245815753936768,0.0
+mfeat-morphological,Provably Robust Boosting,4,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,67.57792162895203,0.0
+mfeat-morphological,XBART,4,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",0.995,0.9972222222222222,0.002777777777777778,0.9761904761904762,1.0,1.0,50.37886118888855,0.0781106948852539
+mfeat-morphological,Adaboost,5,"{'learning_rate': 0.39643541684062933, 'n_estimators': 20}",1.0,1.0,0.0,1.0,1.0,1.0,5.639295816421509,0.0
+mfeat-morphological,LightGBM,5,"{'n_estimators': 100, 'num_leaves': 5}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,1.6245911121368408,0.0
+mfeat-morphological,Provably Robust Boosting,5,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,67.21862888336182,0.07810711860656738
+mfeat-morphological,XBART,5,"{'alpha': 1.5199082092610237, 'beta': 1.1254150515392516, 'burnin': 5, 'max_depth_num': 6, 'num_sweeps': 60, 'num_trees': 20}",1.0,1.0,0.0,1.0,1.0,1.0,52.86258840560913,0.07810711860656738
+mfeat-morphological,Adaboost,6,"{'learning_rate': 1.262520499972521, 'n_estimators': 20}",0.99,0.9722222222222222,0.02777777777777778,0.9722222222222222,0.9788888888888888,0.9785700993093498,5.60806131362915,0.0
+mfeat-morphological,LightGBM,6,"{'n_estimators': 50, 'num_leaves': 100}",0.995,0.975,0.025,0.9972375690607735,0.9994444444444445,0.9976422954993152,1.6089963912963867,0.0
+mfeat-morphological,Provably Robust Boosting,6,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",0.995,0.975,0.025,0.9972375690607735,0.975,0.9873687845303868,67.6091628074646,0.07810592651367188
+mfeat-morphological,XBART,6,"{'alpha': 0.5579483854494223, 'beta': 1.3982006857683706, 'burnin': 5, 'max_depth_num': 6, 'num_sweeps': 20, 'num_trees': 20}",0.995,0.975,0.025,0.9972375690607735,0.9994444444444445,0.9978859729895642,39.42830300331116,0.0
+mfeat-morphological,Adaboost,7,"{'learning_rate': 1.6816410175208014, 'n_estimators': 20}",0.995,0.9972222222222222,0.002777777777777778,0.9761904761904762,0.9944444444444445,0.7378167623833454,8.232446670532227,0.07810473442077637
+mfeat-morphological,LightGBM,7,"{'n_estimators': 100, 'num_leaves': 50}",1.0,1.0,0.0,1.0,1.0,1.0,1.8589019775390625,0.0
+mfeat-morphological,Provably Robust Boosting,7,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,74.42006731033325,0.0
+mfeat-morphological,XBART,7,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,51.50356149673462,0.0
+mfeat-morphological,Adaboost,8,"{'learning_rate': 0.39643541684062933, 'n_estimators': 20}",1.0,1.0,0.0,1.0,1.0,1.0,5.592440128326416,0.07810711860656738
+mfeat-morphological,LightGBM,8,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,1.6558606624603271,0.0
+mfeat-morphological,Provably Robust Boosting,8,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,67.76537656784058,0.07810592651367188
+mfeat-morphological,XBART,8,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,51.222413063049316,0.0780797004699707
+mfeat-morphological,Adaboost,9,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",1.0,1.0,0.0,1.0,0.9999999999999999,1.0,6.201664447784424,0.23431777954101562
+mfeat-morphological,LightGBM,9,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,1.6558263301849365,0.0
+mfeat-morphological,Provably Robust Boosting,9,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,67.71851205825806,0.07810473442077637
+mfeat-morphological,XBART,9,"{'alpha': 0.5579483854494223, 'beta': 1.3982006857683706, 'burnin': 5, 'max_depth_num': 6, 'num_sweeps': 20, 'num_trees': 20}",1.0,1.0,0.0,1.0,1.0,1.0,51.191171407699585,0.0

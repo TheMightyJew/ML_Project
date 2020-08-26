@@ -1,0 +1,41 @@
+Dataset Name,Algorithm Name,Cross Validation[1-10],Hyper-Parameters Values,Accuracy,TPR,FPR,Precision,AUC,PR Curve,Training Time,Inference Time
+acute-inflammation,Adaboost,0,"{'learning_rate': 1.6816410175208014, 'n_estimators': 20}",1.0,1.0,0.0,1.0,1.0,1.0,5.390883207321167,0.0
+acute-inflammation,LightGBM,0,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,0.5781302452087402,0.0
+acute-inflammation,Provably Robust Boosting,0,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,6.312802791595459,0.0
+acute-inflammation,XBART,0,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,0.9999999999999999,13.969424724578857,0.0
+acute-inflammation,Adaboost,1,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,5.703451871871948,2.603809038798014
+acute-inflammation,LightGBM,1,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,0.5781221389770508,0.0
+acute-inflammation,Provably Robust Boosting,1,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,6.328468084335327,1.3021230697631836
+acute-inflammation,XBART,1,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,14.141412496566772,0.0
+acute-inflammation,Adaboost,2,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,5.734687566757202,2.6042858759562173
+acute-inflammation,LightGBM,2,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,0.546882152557373,0.0
+acute-inflammation,Provably Robust Boosting,2,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,6.312845706939697,0.0
+acute-inflammation,XBART,2,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,14.000882148742676,0.0
+acute-inflammation,Adaboost,3,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,5.687832593917847,3.9065082867940264
+acute-inflammation,LightGBM,3,"{'n_estimators': 20, 'num_leaves': 5}",1.0,1.0,0.0,1.0,1.0,1.0,0.5468850135803223,0.0
+acute-inflammation,Provably Robust Boosting,3,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",0.5833333333333334,0.5833333333333334,0.4166666666666667,0.7727272727272727,1.0,1.0,6.172248840332031,1.302162806193034
+acute-inflammation,XBART,3,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,13.96962022781372,0.0
+acute-inflammation,Adaboost,4,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,5.640967607498169,2.604544162750244
+acute-inflammation,LightGBM,4,"{'n_estimators': 100, 'num_leaves': 50}",1.0,1.0,0.0,1.0,1.0,1.0,0.5468862056732178,0.0
+acute-inflammation,Provably Robust Boosting,4,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,6.266033411026001,1.302162806193034
+acute-inflammation,XBART,4,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,13.969719171524048,0.0
+acute-inflammation,Adaboost,5,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,5.672245502471924,2.6049017906188965
+acute-inflammation,LightGBM,5,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,0.5468823909759521,0.0
+acute-inflammation,Provably Robust Boosting,5,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,6.2816712856292725,1.302162806193034
+acute-inflammation,XBART,5,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,13.969689130783081,0.0
+acute-inflammation,Adaboost,6,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,5.687880992889404,2.604365348815918
+acute-inflammation,LightGBM,6,"{'n_estimators': 100, 'num_leaves': 50}",1.0,1.0,0.0,1.0,1.0,1.0,0.5781612396240234,0.0
+acute-inflammation,Provably Robust Boosting,6,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,6.29729700088501,1.3021429379781086
+acute-inflammation,XBART,6,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,14.188555002212524,0.0
+acute-inflammation,Adaboost,7,"{'learning_rate': 1.4907884894416696, 'n_estimators': 100}",1.0,1.0,0.0,1.0,1.0,1.0,5.609798431396484,1.302162806193034
+acute-inflammation,LightGBM,7,"{'n_estimators': 50, 'num_leaves': 100}",1.0,1.0,0.0,1.0,1.0,1.0,0.5781340599060059,0.0
+acute-inflammation,Provably Robust Boosting,7,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,6.312963485717773,1.302162806193034
+acute-inflammation,XBART,7,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,14.188577651977539,0.0
+acute-inflammation,Adaboost,8,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,5.703533172607422,2.6042858759562173
+acute-inflammation,LightGBM,8,"{'n_estimators': 100, 'num_leaves': 50}",1.0,1.0,0.0,1.0,1.0,1.0,0.5781452655792236,0.0
+acute-inflammation,Provably Robust Boosting,8,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,6.328590631484985,0.0
+acute-inflammation,XBART,8,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,14.016677141189575,0.0
+acute-inflammation,Adaboost,9,"{'learning_rate': 0.8116262258099887, 'n_estimators': 200}",1.0,1.0,0.0,1.0,1.0,1.0,5.750422239303589,2.605259418487549
+acute-inflammation,LightGBM,9,"{'n_estimators': 100, 'num_leaves': 50}",1.0,1.0,0.0,1.0,1.0,1.0,0.5625193119049072,0.0
+acute-inflammation,Provably Robust Boosting,9,"{'max_depth': 3, 'min_samples_leaf': 25, 'min_samples_split': 50}",1.0,1.0,0.0,1.0,1.0,1.0,6.297345161437988,1.302182674407959
+acute-inflammation,XBART,9,"{'alpha': 0.8116262258099887, 'beta': 1.9063571821788408, 'burnin': 10, 'max_depth_num': 5, 'num_sweeps': 20, 'num_trees': 100}",1.0,1.0,0.0,1.0,1.0,1.0,14.173041343688965,0.0
