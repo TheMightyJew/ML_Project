@@ -31,6 +31,8 @@ def read_meta_features(results_directory):
                 current_algorithm_row['Class'] = int(algorithm in best_algorithms)
 
                 total_df = total_df.append(current_algorithm_row, ignore_index=True)
+        else:
+            print("missing results file for", dataset_name)
 
     X_total = total_df.loc[:, total_df.columns != 'Class']
     Y_total = total_df.loc[:, ['Class']]
@@ -48,7 +50,7 @@ def train_without_dataset(dataset, X_total, Y_total, X_no_dataset):
     X_test = X_no_dataset[test_index]
     Y_test = Y_total[test_index]
 
-    xgb_classifier = XGBClassifier()
+    xgb_classifier = XGBClassifier(learning_rate=0.01)
     xgb_classifier.fit(X_train, Y_train['Class'].ravel())
 
     y_pred = xgb_classifier.predict_proba(X_test)
@@ -71,3 +73,12 @@ def train_without_dataset(dataset, X_total, Y_total, X_no_dataset):
     print('real best algorithm:', real_algorithm)
     '''
     return real_algorithm, predicted_algorithm
+
+
+def train_on_all_datasets(X_no_dataset, Y_total):
+    X_train = X_no_dataset
+    Y_train = Y_total
+    xgb_classifier = XGBClassifier(learning_rate=0.01)
+    xgb_classifier.fit(X_train, Y_train['Class'].ravel())
+
+    return xgb_classifier

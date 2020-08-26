@@ -1,4 +1,3 @@
-import copy
 import os
 import pandas as pd
 from sklearn.model_selection import StratifiedKFold
@@ -14,7 +13,10 @@ from WrappedModels.wrapper_xbart import Wrapper_xbart as wxbart
 import time
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
-from meta_learner import train_without_dataset, read_meta_features
+from meta_learner import train_without_dataset, read_meta_features, train_on_all_datasets
+import matplotlib.pyplot as plt
+from xgboost import plot_importance
+
 
 df_columns = ['Dataset Name', 'Algorithm Name', 'Cross Validation[1-10]', 'Hyper-Parameters Values', 'Accuracy', 'TPR',
               'FPR', 'Precision', 'AUC', 'PR Curve', 'Training Time', 'Inference Time']
@@ -187,6 +189,15 @@ def test_models(random_state, external_split, internal_split, optimization_itera
         run_test(filename, 'Results', models, random_state, external_split, internal_split, optimization_iterations)
 
 
+def calculate_importance(X_no_dataset, Y_total):
+    meta_classifier = train_on_all_datasets(X_no_dataset, Y_total)
+
+    importance_types = ['weight', 'gain', 'cover']
+    for f in importance_types:
+        plot_importance(meta_classifier, importance_type=f, title='Feature importance: ' + f, max_num_features=25)  # top 25 most important features
+        plt.show()
+
+
 def test_meta_learner(results_directory, meta_results_dir, oracle_directory):
     X_total, Y_total, X_no_dataset = read_meta_features(results_directory)
     success_num = 0
@@ -210,6 +221,8 @@ def test_meta_learner(results_directory, meta_results_dir, oracle_directory):
 
     accuracy = success_num / counter
     print(accuracy)
+
+    calculate_importance(X_no_dataset, Y_total)
 
 
 special_filenames = ['iris', 'lupus', 'kidney', 'autos', 'analcatdata_germangss', 'braziltourism']
