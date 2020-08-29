@@ -1,0 +1,6 @@
+There are 3 main py files.
+1. merge_files.py - in this file we wrote some functions that helped us manipulate the data and print or save additional data for the statistics analysis.
+2. meta_learner.py - this file represents the meta learner algorithm, it includes some side function to edit the data and the important ones like training the model and predicting the best algorithm.
+3. main.py - most important file, it runs all the algorithms on all the datasets, in the last lines of code it is possible to edit the parameters for the test, afterwards it runs all the tests that should run for couple of days.
+
+In addition there are directories with the implemented algorithms and some more py files that play a role as a wrapper of the existing implementations in order to add some functions that we were using.

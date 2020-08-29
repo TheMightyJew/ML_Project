@@ -1,5 +1,5 @@
 import os
-import random
+from sklearn.metrics import accuracy_score
 from xgboost import XGBClassifier
 import pandas as pd
 import numpy as np
@@ -13,8 +13,8 @@ def get_best_algorithm(dataset_name, results_directory):
     max_idx = a.idxmax()
     max_auc = a['AUC'].max()
     return list(a[a['AUC'] == max_auc].index.values)
-    #random_algorithm = int(random.random() * len(algorithm_names))
-    #return algorithm_names[random_algorithm]
+    # random_algorithm = int(random.random() * len(algorithm_names))
+    # return algorithm_names[random_algorithm]
 
 
 def read_meta_features(results_directory):
@@ -41,7 +41,7 @@ def read_meta_features(results_directory):
     return X_total, Y_total, X_no_dataset
 
 
-def train_without_dataset(dataset, X_total, Y_total, X_no_dataset):
+def acc4certain_dataset(dataset, X_total, Y_total, X_no_dataset):
     train_index = X_total['dataset'] != dataset
     test_index = X_total['dataset'] == dataset
 
@@ -50,35 +50,17 @@ def train_without_dataset(dataset, X_total, Y_total, X_no_dataset):
     X_test = X_no_dataset[test_index]
     Y_test = Y_total[test_index]
 
-    xgb_classifier = XGBClassifier(learning_rate=0.01)
+    xgb_classifier = XGBClassifier(learning_rate=0.75)
     xgb_classifier.fit(X_train, Y_train['Class'].ravel())
 
-    y_pred = xgb_classifier.predict_proba(X_test)
-    pred_index = int(X_test.iloc[np.argmax(y_pred[:, 1])]['algorithm'])
-    predicted_algorithm = algorithm_names[pred_index]
-    best_indexes = []
-    best_grade = np.max(Y_test)[0]
-    for index, grade in enumerate(Y_test.values):
-        if grade == best_grade:
-            best_indexes.append(index)
-    best_algorithms = [algorithm_names[int(X_test.iloc[x]['algorithm'])] for x in best_indexes]
-    if predicted_algorithm in best_algorithms:
-        real_algorithm = predicted_algorithm
-    else:
-        real_algorithm = best_algorithms[0]
-    '''
-    print(y_pred)
-    print(Y_test)
-    print('predicted best algorithm:', predicted_algorithm)
-    print('real best algorithm:', real_algorithm)
-    '''
-    return real_algorithm, predicted_algorithm
+    y_pred = xgb_classifier.predict(X_test)
+    return accuracy_score(Y_test.values, y_pred)
 
 
 def train_on_all_datasets(X_no_dataset, Y_total):
     X_train = X_no_dataset
     Y_train = Y_total
-    xgb_classifier = XGBClassifier(learning_rate=0.01)
+    xgb_classifier = XGBClassifier(learning_rate=0.75)
     xgb_classifier.fit(X_train, Y_train['Class'].ravel())
 
     return xgb_classifier

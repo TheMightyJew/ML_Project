@@ -13,10 +13,12 @@ from WrappedModels.wrapper_xbart import Wrapper_xbart as wxbart
 import time
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
-from meta_learner import train_without_dataset, read_meta_features, train_on_all_datasets
-import matplotlib.pyplot as plt
+from meta_learner import acc4certain_dataset, read_meta_features, train_on_all_datasets
 from xgboost import plot_importance
 
+import matplotlib.pyplot as plt
+from matplotlib import rcParams
+rcParams.update({'figure.autolayout': True})
 
 df_columns = ['Dataset Name', 'Algorithm Name', 'Cross Validation[1-10]', 'Hyper-Parameters Values', 'Accuracy', 'TPR',
               'FPR', 'Precision', 'AUC', 'PR Curve', 'Training Time', 'Inference Time']
@@ -51,11 +53,13 @@ num_sweeps_dist = rv_discrete(name='num_sweeps_dist',
                               values=(num_sweeps_k, [1 / len(num_sweeps_k)] * len(num_sweeps_k)))
 burnin_k = [0, 1, 2, 5, 10, 15]
 burnin_dist = rv_discrete(name='burnin_dist',
-                              values=(burnin_k, [1 / len(burnin_k)] * len(burnin_k)))
+                          values=(burnin_k, [1 / len(burnin_k)] * len(burnin_k)))
 max_depth_num_k = [3, 4, 5, 6]
 max_depth_num_dist = rv_discrete(name='max_depth_num_dist',
-                              values=(max_depth_num_k, [1 / len(max_depth_num_k)] * len(max_depth_num_k)))
-wxbart_dist_dict = dict(num_trees=num_trees_k, num_sweeps=num_sweeps_dist, burnin=burnin_dist, max_depth_num=max_depth_num_dist, alpha=uniform(loc=0.1, scale=1.9), beta=uniform(loc=0.1, scale=1.9))
+                                 values=(max_depth_num_k, [1 / len(max_depth_num_k)] * len(max_depth_num_k)))
+wxbart_dist_dict = dict(num_trees=num_trees_k, num_sweeps=num_sweeps_dist, burnin=burnin_dist,
+                        max_depth_num=max_depth_num_dist, alpha=uniform(loc=0.1, scale=1.9),
+                        beta=uniform(loc=0.1, scale=1.9))
 
 algorithms_dict = {}
 algorithms_dict['Adaboost'] = ('Adaboost', AdaBoostClassifier, AdaBoostClassifier(), adb_dist_dict)
@@ -102,15 +106,6 @@ def fix_dataset(df):
                 break
 
     Y['Class'] = le.fit_transform(Y['Class'])
-    '''
-    indexes_dict = {}
-    original_class_labels = np.unique(Y.values)
-    for class_index in range(len(original_class_labels)):
-        indexes_dict[class_index] = (Y['Class'] == original_class_labels[class_index]).values
-    for class_index in indexes_dict.keys():
-        current_indexes = indexes_dict[class_index]
-        Y['Class'].iloc[current_indexes] = class_index
-    '''
     return X, Y
 
 
@@ -189,47 +184,48 @@ def test_models(random_state, external_split, internal_split, optimization_itera
         run_test(filename, 'Results', models, random_state, external_split, internal_split, optimization_iterations)
 
 
-def calculate_importance(X_no_dataset, Y_total):
+def calc_plot_importance(X_no_dataset, Y_total):
     meta_classifier = train_on_all_datasets(X_no_dataset, Y_total)
 
     importance_types = ['weight', 'gain', 'cover']
-    for f in importance_types:
-        plot_importance(meta_classifier, importance_type=f, title='Feature importance: ' + f, max_num_features=25)  # top 25 most important features
-        plt.show()
+    for type in importance_types:
+        plot_importance(meta_classifier, importance_type=type, title='Feature importance: ' + type,
+                        max_num_features=20)  # top 20 most important features
+        plt.savefig('plots/' + type + '_importance.png')
+        plt.clf()
+
+    import shap
+
+    # load JS visualization code to notebook
+    shap.initjs()
+
+    # explain the model's predictions using SHAP
+    # (same syntax works for LightGBM, CatBoost, scikit-learn and spark models)
+    explainer = shap.TreeExplainer(meta_classifier)
+    shap_values = explainer.shap_values(X_no_dataset)
+
+    # visualize the first prediction's explanation (use matplotlib=True to avoid Javascript)
+    shap.force_plot(explainer.expected_value, shap_values[0, :], X_no_dataset.iloc[0, :])
+    shap.summary_plot(shap_values, X_no_dataset, show=False)
+    plt.savefig('plots/shap_values.png')
+    plt.clf()
 
 
-def test_meta_learner(results_directory, meta_results_dir, oracle_directory):
+def test_meta_learner(results_directory):
     X_total, Y_total, X_no_dataset = read_meta_features(results_directory)
-    success_num = 0
-    counter = 0
+    accuracies = []
     for filename in os.listdir(results_directory):
-        real_algorithm, predicted_algorithm = train_without_dataset(filename.replace('.csv', ''), X_total, Y_total, X_no_dataset)
-        df = pd.read_csv(results_directory + '/' + filename)
+        acc = acc4certain_dataset(filename.replace('.csv', ''), X_total, Y_total, X_no_dataset)
+        accuracies.append(acc)
+    accuracy = np.mean(accuracies)
+    print('Meta Learner\'s Accuracy =', accuracy)
 
-        alg_df = df[df['Algorithm Name'] == predicted_algorithm]
-        alg_df['Algorithm Name'] = 'Meta Learner'
-        alg_df['Previous Algorithm'] = predicted_algorithm
-        alg_df.to_csv(meta_results_dir + '/' + filename, index=False)
-
-        alg_df = df[df['Algorithm Name'] == real_algorithm]
-        alg_df['Algorithm Name'] = 'Oracle'
-        alg_df['Previous Algorithm'] = real_algorithm
-        alg_df.to_csv(oracle_directory + '/' + filename, index=False)
-
-        success_num += int(real_algorithm == predicted_algorithm)
-        counter += 1
-
-    accuracy = success_num / counter
-    print(accuracy)
-
-    calculate_importance(X_no_dataset, Y_total)
+    calc_plot_importance(X_no_dataset, Y_total)
 
 
-special_filenames = ['iris', 'lupus', 'kidney', 'autos', 'analcatdata_germangss', 'braziltourism']
 random_state = 42
 external_split = 10
 internal_split = 3
 optimization_iterations = 50
-# run_test('kc3.csv', 'Results', list(algorithms_dict.values()), random_state, external_split, internal_split, optimization_iterations)
-# test_models(random_state, external_split, internal_split, optimization_iterations)
-test_meta_learner('Results', 'Meta_Results', 'Oracle_Results')
+test_models(random_state, external_split, internal_split, optimization_iterations)
+test_meta_learner('Results')

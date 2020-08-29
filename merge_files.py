@@ -48,9 +48,16 @@ def print_descriptive_statistics(algorithms_auc):
 def print_posthoc(algorithms_auc):
     print(posthoc_wilcoxon(list(algorithms_auc.values())).round(3))
 
+def write_stats(df):
+    cols = ['Algorithm Name', 'Accuracy', 'TPR', 'FPR', 'Precision', 'AUC', 'PR Curve', 'Training Time', 'Inference Time']
+    df = df[cols]
+    df = df.groupby('Algorithm Name').mean()
+    df.to_csv('Summarized_Results/algos_stats.csv')
 
 df = pd.read_csv('Summarized_Results/auc_combined_csv.csv')
 algorithms_auc = auc_for_algo(df)
 print_friedman_Test(algorithms_auc)
 print_descriptive_statistics(algorithms_auc)
 print_posthoc(algorithms_auc)
+df = pd.read_csv('Summarized_Results/combined_csv.csv')
+write_stats(df)
